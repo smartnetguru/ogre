@@ -1,4 +1,12 @@
 Rails.application.configure do
+
+  # Pasted from devise:install instructions
+  # Ensure you have defined default url options in your environments files. Here
+  # is an example of default_url_options appropriate for a development environment
+  # in config/environments/development.rb:
+  # In production, :host should be set to the actual host of your application.
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
