@@ -20,4 +20,9 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  your_resumes: 'Your Resumes'
+  create_a_resume: 'Create a Resume'
+  resume_name: 'Name'
+  resume_description: 'Description'
+  delete: 'Delete'
+  blank: 'Blank'
