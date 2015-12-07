@@ -7,6 +7,13 @@ Rails.application.configure do
   # In production, :host should be set to the actual host of your application.
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
+  config.action_mailer.smtp_settings = {
+    address: ENV['mailer_address'],
+    port: ENV['mailer_port'].to_i,
+    user_name: ENV['mailer_username'],
+    password: ENV['mailer_password']
+  }
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
