@@ -1,9 +1,7 @@
 | Edit
-= form_for @resume do |f|
-  = f.text_field :name
-  = f.text_field :desc
-  = f.text_field :website
-  = f.text_field :email
-  = f.text_field :contactname
-  = f.text_field :phone
-  = f.text_field :address
+= form_for @resume do |form|
+  - [:name, :desc, :website, :email, :contactname, :phone, :address].each do |field|
+    .field
+      = form.label field
+      = form.text_field field
+  = form.submit

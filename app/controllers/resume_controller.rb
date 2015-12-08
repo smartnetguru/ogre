@@ -7,6 +7,16 @@ class ResumeController < ApplicationController
       redirect_to :root_path
     end
   end
+  def update
+    new_resume = Hashie::Mash.new(params['resume'])
+    @resume = Resume.where(id: params['id']).first
+    update_block = {}
+    [:name, :desc, :website, :email, :contactname, :phone, :address].each do |f|
+      update_block[f] = new_resume.send f
+    end
+    @resume.update update_block
+    redirect_to edit_resume_path @resume
+  end
   def edit
     @resume = Resume.where(id: params['id']).first
   end
