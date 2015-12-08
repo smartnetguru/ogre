@@ -1,0 +1,22 @@
+#resume-section
+  #create-resume-section
+    = link_to t('create_a_resume'), :new_resume
+  #your-resumes-section
+    = t 'your_resumes'
+    #resumes
+      table
+        tr
+          th
+            = t 'resume_name'
+          th
+            = t 'resume_description'
+          th
+            = t 'delete'
+        - current_user.resume.each do |resume|
+          tr
+            td
+              = link_to resume.name_text, edit_resume_path(resume)
+            td
+              = resume.desc_text
+            td
+              = link_to 'X', "/resume/#{resume.id}/delete"
