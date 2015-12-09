@@ -13,9 +13,32 @@ user.password_confirmation = 'asdfasdf'
 user.skip_confirmation!
 user.save!
 
-Job.create({
+job = Job.create({
   user_id: User.first.id,
   company: 'ACME',
   position: 'QA',
   location: 'Grand Canyon'
 })
+
+resume = Resume.create({
+  user_id: User.first.id,
+  name: 'alpha',
+  desc: 'applying to an alpha job',
+  website: '',
+  email: 'alpha@beta.com',
+  contactname: 'steve stevenson II',
+  phone: '555-555-5555',
+  address: '123 fake st springfield, or'
+})
+
+[
+  'Help customers',
+  'Sit in a cubicle',
+  'Answer the phone'
+].each do |res|
+  Responsibility.create({
+    job_id: job.id,
+    resume_id: resume.id,
+    text: res
+  })
+end

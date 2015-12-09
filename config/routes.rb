@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   resources :resume
   get 'job/:id/delete' => 'job#delete'
   resources :job
+  get 'responsibility/:id/delete' => 'responsibility#delete'
+  resources :responsibility
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
