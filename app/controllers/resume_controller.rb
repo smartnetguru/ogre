@@ -9,7 +9,7 @@ class ResumeController < ApplicationController
   end
   def update
     new_resume = Hashie::Mash.new(params['resume'])
-    @resume = Resume.where(user: current_user).first
+    @resume = Resume.where(id: params['id']).first
     update_block = {}
     [:name, :desc, :website, :email, :contactname, :phone, :address].each do |f|
       update_block[f] = new_resume.send f
@@ -18,7 +18,7 @@ class ResumeController < ApplicationController
     redirect_to edit_resume_path @resume
   end
   def edit
-    @resume = Resume.where(user: current_user).first
+    @resume = Resume.where(id: params['id']).first
     @jobs = Job.where(user: current_user)
   end
   def delete
@@ -31,7 +31,7 @@ class ResumeController < ApplicationController
     redirect_to '/'
   end
   def update_resps
-    @resume = Resume.where(id: current_user.id).first
+    @resume = Resume.where(id: params['id']).first
     params['resp'].each do |http_resp|
       resp = Responsibility.where(id: http_resp[0].to_i).first
       related = http_resp[1] == '1'
