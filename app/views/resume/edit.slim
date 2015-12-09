@@ -16,6 +16,6 @@
         - job.responsibility.each do |resp|
           .responsibility
             = hidden_field_tag "resp[#{resp.id}]", '0'
-            = check_box_tag "resp[#{resp.id}]", '1', resp.resume == @resume
+            = check_box_tag "resp[#{resp.id}]", '1', @resume.responsibilitys.include?(resp)
             = resp.text
   = form.submit

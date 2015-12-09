@@ -32,9 +32,14 @@ class ResumeController < ApplicationController
   end
   def update_resps
     @resume = Resume.where(id: current_user.id).first
-    params['resp'].each do |resp|
-      resp_id = resp[0].to_i
-      related = resp[1] == '1'
+    params['resp'].each do |http_resp|
+      resp = Responsibility.where(id: http_resp[0].to_i).first
+      related = http_resp[1] == '1'
+      if related then
+        @resume.responsibilitys.append(resp)
+      else
+        @resume.responsibilitys.delete(resp)
+      end
     end
     redirect_to edit_resume_path @resume
   end

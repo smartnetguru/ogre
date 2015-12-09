@@ -22,6 +22,7 @@ class JobController < ApplicationController
   end
   def delete
     job = Job.where(id: params['id']).first
+    job.responsibility.destroy_all
     job.destroy if not job.nil?
     # not sure why
     # redirect_to :root_path
