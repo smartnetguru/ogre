@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'home#index'
+  patch 'resume/:id/update_resps' => 'resume#update_resps'
   get 'resume/:id/delete' => 'resume#delete'
   resources :resume
   get 'job/:id/delete' => 'job#delete'

@@ -14,21 +14,21 @@ user.skip_confirmation!
 user.save!
 
 job1 = Job.create({
-  user_id: User.first.id,
+  user_id: user.id,
   company: 'ACME',
   position: 'QA',
   location: 'Grand Canyon'
 })
 
 job2 = Job.create({
-  user_id: User.first.id,
+  user_id: user.id,
   company: 'MomCorp',
   position: 'Engineer',
   location: 'New Newyork'
 })
 
 resume = Resume.create({
-  user_id: User.first.id,
+  user_id: user.id,
   name: 'alpha',
   desc: 'applying to an alpha job',
   website: '',

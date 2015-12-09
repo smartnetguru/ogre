@@ -6,3 +6,15 @@
       = form.text_field field
   = form.submit
 
+| Jobs
+= form_for @resume, url: {action: 'update_resps'} do |form|
+  - @jobs.each do |job|
+    .job
+      .header
+        = "#{job.company} - #{job.position}"
+      .responsibilities
+        - job.responsibility.each do |resp|
+          .responsibility
+            input type='checkbox' checked=(resp.resume == @resume)
+            = resp.text
+  = form.submit
