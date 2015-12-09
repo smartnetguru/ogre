@@ -12,3 +12,10 @@ user.password = 'asdfasdf'
 user.password_confirmation = 'asdfasdf'
 user.skip_confirmation!
 user.save!
+
+Job.create({
+  user_id: User.first.id,
+  company: 'ACME',
+  position: 'QA',
+  location: 'Grand Canyon'
+})
