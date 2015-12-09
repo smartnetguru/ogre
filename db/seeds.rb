@@ -31,7 +31,7 @@ resume = Resume.create({
   user_id: user.id,
   name: 'alpha',
   desc: 'applying to an alpha job',
-  website: '',
+  website: 'www.foo.bar',
   email: 'alpha@beta.com',
   contactname: 'steve stevenson II',
   phone: '555-555-5555',
