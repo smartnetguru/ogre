@@ -22,11 +22,17 @@ class JobController < ApplicationController
   end
   def delete
     job = Job.where(id: params['id']).first
+    job.responsibility.destroy_all
     job.destroy if not job.nil?
     # not sure why
     # redirect_to :root_path
     # doesn't work here. I really hope it's not part of a
     # bigger problem
     redirect_to '/'
+  end
+  def new_resp
+    @job = Job.where(id: params['id']).first
+    Responsibility.create(job: @job)
+    redirect_to edit_job_path @job
   end
 end

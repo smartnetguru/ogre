@@ -5,3 +5,17 @@
       = form.label field
       = form.text_field field
   = form.submit
+
+| Jobs
+= form_for @resume, url: {action: 'update_resps'} do |form|
+  - @jobs.each do |job|
+    .job
+      .header
+        = "#{job.company} - #{job.position}"
+      .responsibilities
+        - job.responsibility.each do |resp|
+          .responsibility
+            = hidden_field_tag "resp[#{resp.id}]", '0'
+            = check_box_tag "resp[#{resp.id}]", '1', @resume.responsibilitys.include?(resp)
+            = resp.text
+  = form.submit

@@ -13,9 +13,53 @@ user.password_confirmation = 'asdfasdf'
 user.skip_confirmation!
 user.save!
 
-Job.create({
-  user_id: User.first.id,
+job1 = Job.create({
+  user_id: user.id,
   company: 'ACME',
   position: 'QA',
   location: 'Grand Canyon'
 })
+
+job2 = Job.create({
+  user_id: user.id,
+  company: 'MomCorp',
+  position: 'Engineer',
+  location: 'New Newyork'
+})
+
+resume = Resume.create({
+  user_id: user.id,
+  name: 'alpha',
+  desc: 'applying to an alpha job',
+  website: 'www.foo.bar',
+  email: 'alpha@beta.com',
+  contactname: 'steve stevenson II',
+  phone: '555-555-5555',
+  address: '123 fake st springfield, or'
+})
+
+# Job1 responsibilities with some applicable to the resume
+[
+  'Help customers',
+  'Sit in a cubicle',
+  'Answer the phone'
+].each_with_index do |res, i|
+  resp = Responsibility.create({
+    job_id: job1.id,
+    text: res
+  })
+  resp.resumes.push(resume) if i % 2 == 0
+end
+
+# Job2 responsibilities with some applicable to the resume
+[
+  'Develop mom virus',
+  'EyePhone developer',
+  'Bending Unit lead developer'
+].each_with_index do |res, i|
+  resp = Responsibility.create({
+    job_id: job2.id,
+    text: res
+  })
+  resp.resumes.push(resume) if i % 2 == 0
+end
