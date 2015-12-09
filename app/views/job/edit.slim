@@ -5,3 +5,14 @@
       = form.label field
       = form.text_field field
   = form.submit
+
+| Responsibilities
+.responsibilities
+  - @job.responsibility.each do |resp|
+    = form_for resp do |form|
+      .responsibility
+        = form.text_field :text
+        = link_to 'X', "/responsibility/#{resp.id}/delete"
+  = form_for @job, url: {action: 'new_resp'} do |form|
+    = hidden_field_tag 'id', @job.id
+    = form.submit t('add_a_responsibility')

@@ -30,4 +30,9 @@ class JobController < ApplicationController
     # bigger problem
     redirect_to '/'
   end
+  def new_resp
+    @job = Job.where(id: params['id']).first
+    Responsibility.create(job: @job)
+    redirect_to edit_job_path @job
+  end
 end

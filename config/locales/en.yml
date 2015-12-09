@@ -23,6 +23,7 @@ en:
   your_resumes: 'Your Resumes'
   create_a_resume: 'Create a Resume'
   add_a_job: 'Add a Job'
+  add_a_responsibility: 'Add Responsibility'
   name: 'Name'
   company: 'Company'
   description: 'Description'
