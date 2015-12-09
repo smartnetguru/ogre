@@ -13,11 +13,18 @@ user.password_confirmation = 'asdfasdf'
 user.skip_confirmation!
 user.save!
 
-job = Job.create({
+job1 = Job.create({
   user_id: User.first.id,
   company: 'ACME',
   position: 'QA',
   location: 'Grand Canyon'
+})
+
+job2 = Job.create({
+  user_id: User.first.id,
+  company: 'MomCorp',
+  position: 'Engineer',
+  location: 'New Newyork'
 })
 
 resume = Resume.create({
@@ -31,14 +38,30 @@ resume = Resume.create({
   address: '123 fake st springfield, or'
 })
 
+# Job1 responsibilities with some applicable to the resume
 [
   'Help customers',
   'Sit in a cubicle',
   'Answer the phone'
-].each do |res|
+].each_with_index do |res, i|
+  resumeid = if (i+1) % 2 == 0 then resume.id else nil end
   Responsibility.create({
-    job_id: job.id,
-    resume_id: resume.id,
+    job_id: job1.id,
+    resume_id: resumeid,
+    text: res
+  })
+end
+
+# Job2 responsibilities with some applicable to the resume
+[
+  'Develop mom virus',
+  'EyePhone developer',
+  'Bending Unit lead developer'
+].each_with_index do |res, i|
+  resumeid = if (i+1) % 2 == 0 then resume.id else nil end
+  Responsibility.create({
+    job_id: job2.id,
+    resume_id: resumeid,
     text: res
   })
 end
