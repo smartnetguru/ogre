@@ -9,4 +9,11 @@ class Resume < ActiveRecord::Base
     return I18n.t('blank') if desc.nil? or desc.empty?
     return desc
   end
+  def get_relevant_jobs_and_responsibilities
+    retval = {}
+    responsibility.each do |resp|
+      retval[resp.job] = [] if (retval[resp.job] == nil)
+      retval[resp.job].push(resp)
+    end
+  end
 end
