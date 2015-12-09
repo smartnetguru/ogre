@@ -1,3 +1,25 @@
+#job-section
+  #job-resume-section
+    = link_to t('add_a_job'), :new_job
+  #your-jobs-section
+    = t 'your_jobs'
+    #jobs
+      table
+        tr
+          th
+            = t 'company'
+          th
+            = t 'position'
+          th
+            = t 'delete'
+        - current_user.job.each do |job|
+          tr
+            td
+              = link_to job.company, edit_job_path(job)
+            td
+              = job.position
+            td
+              = link_to 'X', "/job/#{job.id}/delete"
 #resume-section
   #create-resume-section
     = link_to t('create_a_resume'), :new_resume
@@ -7,9 +29,9 @@
       table
         tr
           th
-            = t 'resume_name'
+            = t 'name'
           th
-            = t 'resume_description'
+            = t 'description'
           th
             = t 'delete'
         - current_user.resume.each do |resume|

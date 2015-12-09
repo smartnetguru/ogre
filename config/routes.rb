@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   root 'home#index'
   get 'resume/:id/delete' => 'resume#delete'
   resources :resume
+  get 'job/:id/delete' => 'job#delete'
+  resources :job
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

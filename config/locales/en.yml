@@ -22,7 +22,10 @@
 en:
   your_resumes: 'Your Resumes'
   create_a_resume: 'Create a Resume'
-  resume_name: 'Name'
-  resume_description: 'Description'
+  add_a_job: 'Add a Job'
+  name: 'Name'
+  company: 'Company'
+  description: 'Description'
+  position: 'Position'
   delete: 'Delete'
   blank: 'Blank'
