@@ -1,4 +1,4 @@
 class Responsibility < ActiveRecord::Base
   belongs_to :job
-  belongs_to :resume
+  has_and_belongs_to_many :resumes
 end

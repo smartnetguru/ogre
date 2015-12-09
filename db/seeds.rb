@@ -44,12 +44,11 @@ resume = Resume.create({
   'Sit in a cubicle',
   'Answer the phone'
 ].each_with_index do |res, i|
-  resumeid = if (i+1) % 2 == 0 then resume.id else nil end
-  Responsibility.create({
+  resp = Responsibility.create({
     job_id: job1.id,
-    resume_id: resumeid,
     text: res
   })
+  resp.resumes.push(resume) if i % 2 == 0
 end
 
 # Job2 responsibilities with some applicable to the resume
@@ -58,10 +57,9 @@ end
   'EyePhone developer',
   'Bending Unit lead developer'
 ].each_with_index do |res, i|
-  resumeid = if (i+1) % 2 == 0 then resume.id else nil end
-  Responsibility.create({
+  resp = Responsibility.create({
     job_id: job2.id,
-    resume_id: resumeid,
     text: res
   })
+  resp.resumes.push(resume) if i % 2 == 0
 end
