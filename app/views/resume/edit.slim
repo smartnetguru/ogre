@@ -15,6 +15,7 @@
       .responsibilities
         - job.responsibility.each do |resp|
           .responsibility
-            input type='checkbox' checked=(resp.resume == @resume)
+            = hidden_field_tag "resp[#{resp.id}]", '0'
+            = check_box_tag "resp[#{resp.id}]", '1', resp.resume == @resume
             = resp.text
   = form.submit
