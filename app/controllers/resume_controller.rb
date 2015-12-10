@@ -20,6 +20,7 @@ class ResumeController < ApplicationController
   def edit
     @resume = Resume.where(id: params['id']).first
     @jobs = Job.where(user: current_user)
+    @projects = Project.where(user: current_user)
   end
   def delete
     resume = Resume.where(id: params['id']).first
@@ -39,6 +40,19 @@ class ResumeController < ApplicationController
         @resume.responsibilitys.append(resp)
       else
         @resume.responsibilitys.delete(resp)
+      end
+    end
+    redirect_to edit_resume_path @resume
+  end
+  def update_projects
+    @resume = Resume.where(id: params['id']).first
+    params['project'].each do |http_resp|
+      project = Project.where(id: http_resp[0].to_i).first
+      related = http_resp[1] == '1'
+      if related then
+        @resume.projects.append(project)
+      else
+        @resume.projects.delete(project)
       end
     end
     redirect_to edit_resume_path @resume

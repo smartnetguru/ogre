@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   patch 'resume/:id/update_resps' => 'resume#update_resps'
+  patch 'resume/:id/update_projects' => 'resume#update_projects'
   get 'resume/:id/delete' => 'resume#delete'
   resources :resume
 
