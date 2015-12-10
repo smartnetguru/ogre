@@ -9,6 +9,6 @@ class AddResponsibilitiesResumesJoinTable < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :categories_items
+    drop_table :responsibilities_resumes
   end
 end

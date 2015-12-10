@@ -19,3 +19,15 @@
             = check_box_tag "resp[#{resp.id}]", '1', @resume.responsibilitys.include?(resp)
             = resp.text
   = form.submit
+
+| Projects
+= form_for @resume, url: {action: 'update_projects'} do |form|
+  - @projects.each do |project|
+    .project
+        = hidden_field_tag "project[#{project.id}]", '0'
+        = check_box_tag "project[#{project.id}]", '1', @resume.projects.include?(project)
+        span.title
+          = "#{project.title}: "
+        span.description
+          = project.desc
+  = form.submit

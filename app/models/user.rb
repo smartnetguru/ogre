@@ -6,4 +6,5 @@ class User < ActiveRecord::Base
          :confirmable, :lockable, :omniauthable
   has_many :resume
   has_many :job
+  has_many :project
 end
