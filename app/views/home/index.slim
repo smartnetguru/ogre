@@ -35,7 +35,7 @@ br
             = t 'name'
           th
             = t 'description'
-          th colspan=5
+          th colspan=6
             = t 'export'
           th
             = t 'delete'
@@ -49,6 +49,9 @@ br
               | PDF
             td
               | DOC
+            td
+              = link_to "/resume/#{resume.id}/html"
+                | HTML
             td
               | RTF
             td
