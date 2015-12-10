@@ -81,3 +81,15 @@ project2 = Project.create({
   desc: 'Acted as friction to prevent naive utopian agenda from gaining traction',
   start: "1994"
 })
+
+# Resume skills
+[
+  'JavaScript',
+  'Ruby on Rails',
+  'Software Development'
+].each_with_index do |skill, i|
+  Skill.create({
+    resume: resume,
+    name: skill
+  })
+end

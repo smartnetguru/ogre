@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   patch 'resume/:id/update_resps' => 'resume#update_resps'
   patch 'resume/:id/update_projects' => 'resume#update_projects'
+  patch 'resume/:id/new_skill' => 'resume#new_skill'
   get 'resume/:id/delete' => 'resume#delete'
   resources :resume
 
@@ -28,6 +29,9 @@ Rails.application.routes.draw do
 
   get 'project/:id/delete' => 'project#delete'
   resources :project
+
+  get 'skill/:id/delete' => 'skill#delete'
+  resources :skill
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
