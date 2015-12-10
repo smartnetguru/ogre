@@ -187,3 +187,50 @@ end
   })
   resume.responsibilitys.push resp
 end
+
+# Projects relevant to software development
+project1 = Project.create({
+  user: user,
+  title: 'Resume Generator',
+  desc: 'Began work on a web application for the management of résumés',
+  start: "06/12/2015"
+})
+project1.resumes.push resume
+
+project2 = Project.create({
+  user: user,
+  title: 'Personal Website',
+  desc: 'Created a personal website based on Rails tracked on Bitbucket, hosted on Heroku, with resume in LaTeX',
+  start: "20/02/2015"
+})
+project2.resumes.push resume
+
+project3 = Project.create({
+  user: user,
+  title: 'Super Astervoids',
+  desc: 'Created a Unity 4 based Android game with a high score server written in PHP on a personal server running Apache',
+  start: "28/02/2014"
+})
+project3.resumes.push resume
+
+project4 = Project.create({
+  user: user,
+  title: 'IDF Code Breaker Challenge',
+  desc: 'Placed first in timed cipher-cracking competition hosted by Intel',
+  start: "24/09/09"
+})
+project4.resumes.push resume
+
+
+# Resume skills
+[
+  'Git', 'Ruby on Rails', 'Unity3D', 'Linux', 'MacOS', 'Windows',
+  'HTML5', 'CSS3', 'JavaScript', 'PHP', 'Ruby', 'BASH', 'C#', 'C++',
+  'UnityScript', 'Bootstrap', 'Chronoline.js', 'jQuery', 'jquery.Shapeshift',
+  'jQueryUI', 'jQuery Mobile', 'Raphael', 'Sir Trevor JS'
+].each_with_index do |skill, i|
+  Skill.create({
+    resume: resume,
+    name: skill
+  })
+end
