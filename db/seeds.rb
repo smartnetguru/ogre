@@ -104,7 +104,7 @@ resume = Resume.create({
   email: 'saif.tareq@gmail.com',
   contactname: 'Tareq (Derek) Saif',
   phone: '510-555-5555',
-  address: '123 Fake St. Richmond, CA'
+  address: "123 Fake St.\nRichmond, CA"
 })
 
 job2 = Job.create({

@@ -1,0 +1,10 @@
+= "#{@resume.contactname}\n"
+- [:email, :phone, :address, :website].each do |f|
+  - output = @resume.send f
+  - output.gsub!(/\n/, "\n\t\t")
+  - if output != nil and output != ""
+    = "\t#{output}\n"
+= "\n"
+= surround_with_box("Professional History", 20)
+- @jars.each do |job, resps|
+  = job.company

@@ -63,4 +63,9 @@ class ResumeController < ApplicationController
     @skill = Skill.create({resume: @resume})
     redirect_to edit_resume_path @resume
   end
+  def export_txt
+    @resume = Resume.where(id: params['id']).first
+    @jars = @resume.get_relevant_jobs_and_responsibilities
+    render layout: false, content_type: 'text/plain'
+  end
 end
