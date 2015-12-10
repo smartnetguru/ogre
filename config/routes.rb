@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   patch 'resume/:id/update_projects' => 'resume#update_projects'
   patch 'resume/:id/new_skill' => 'resume#new_skill'
   get 'resume/:id/delete' => 'resume#delete'
+  get 'resume/:id/txt' => 'resume#export_txt'
   resources :resume
 
   patch 'job/new_resp' => 'job#new_resp'

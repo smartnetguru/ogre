@@ -1,0 +1,38 @@
+/ These options should probably be moved to the edit resume menu
+- width = 50
+- tab = "    "
+- dateformat =  "%b %d, %Y"
+
+= surround_with_box(@resume.contactname, width)
+- [:email, :phone, :address, :website].each do |f|
+  - output = @resume.send f
+  - output.gsub!(/\n/, "\n#{tab*2}")
+  - if output != nil and output != ""
+    = "#{tab}#{output}\n"
+= "\n"
+
+= surround_with_box "Professional History"
+- @jars.each do |job, resps|
+  = "#{tab}#{job.company}\n"
+  = "#{tab*2}#{job.start.strftime(dateformat)}"
+  = " - #{job.end.strftime(dateformat)}" if job.end != nil
+  = "\n"
+  - resps.each do |resp|
+    = raw "#{tab*2}> #{resp.text}\n"
+  = "\n"
+
+= surround_with_box "Projects"
+- @resume.projects_sorted.each do |project|
+  = "#{tab}#{project.title}\n"
+  = "#{tab*2}#{project.start.strftime(dateformat)}"
+  = " - #{project.end.strftime(dateformat)}" if project.end != nil
+  = "\n"
+  = raw "#{tab*2}> #{project.desc}\n"
+  = "\n"
+
+= surround_with_box "Skills"
+- @resume.skill.each_with_index do |skill, index|
+  = tab if index%2 == 0
+  = raw "> #{skill.name}"
+  = " "*(width/2 - skill.name.length)
+  = "\n" if index%2 == 1

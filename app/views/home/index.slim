@@ -35,6 +35,8 @@ br
             = t 'name'
           th
             = t 'description'
+          th colspan=5
+            = t 'export'
           th
             = t 'delete'
         - current_user.resume.each do |resume|
@@ -43,6 +45,17 @@ br
               = link_to resume.name_text, edit_resume_path(resume)
             td
               = resume.desc_text
+            td
+              | PDF
+            td
+              | DOC
+            td
+              | RTF
+            td
+              = link_to "/resume/#{resume.id}/txt"
+                | TXT
+            td
+              | JSON
             td
               = link_to 'X', "/resume/#{resume.id}/delete"
 
