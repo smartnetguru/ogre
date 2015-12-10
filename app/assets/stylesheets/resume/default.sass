@@ -1,14 +1,59 @@
+$header-color: #ddd
+$shale: #eee
+$indent: .2in
+
 body
   height: 11in
   width: 8.5in
   margin: 0px
   padding: 1in .63in 1in .63in
   font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif
+  font-size: 11pt
 
 .header
   font-size: 20px
+  background-color: $header-color
+  padding: .05in
+  padding-left: $indent
+  margin-bottom: .05in
+
+.contactname.header
+  font-size: 30px
 
 .history,
 .projects,
 .skills
-  margin-top: 10px
+  margin-top: .15in
+
+.skill
+  background-color: $shale
+  border-radius: 5px
+  padding: .05in
+  margin: 0px .05in .05in .05in
+  display: inline-block
+
+.content
+  margin-left: $indent
+
+.responsibilities,
+.project .description
+  margin-left: $indent
+
+.project .description
+  margin-bottom: .05in
+
+.project .title,
+.job .company
+  font-weight: bold
+
+.date
+  font-style: italic
+
+.contact .label
+  display: inline-block
+  font-weight: bold
+  width: .6in
+
+.project .description:before,
+.job .responsibility:before
+  content: '>'

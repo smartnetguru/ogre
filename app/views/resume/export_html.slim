@@ -8,41 +8,47 @@ html
     .contact
       .contactname.header
         = @resume.contactname
-      - [:email, :phone, :address, :website].each do |f|
-        div class=f
-        = @resume.send f
+      .content
+        - [:email, :phone, :address, :website].each do |f|
+          div class=f
+            .label
+              = t("resume.#{f}")
+            = @resume.send f
 
     .history
       .header
         | Professional History
-      - @jars.each do |job, resps|
-        .job
-          .company
-            = job.company
-          .date
-            = job.start.strftime(dateformat)
-            = " - #{job.end.strftime(dateformat)}" if job.end != nil
-          .responsibilities
-            - resps.each do |resp|
-              .responsibility
-                = resp.text
+      .content
+        - @jars.each do |job, resps|
+          .job
+            .company
+              = job.company
+            .date
+              = job.start.strftime(dateformat)
+              = " - #{job.end.strftime(dateformat)}" if job.end != nil
+            .responsibilities
+              - resps.each do |resp|
+                .responsibility
+                  = resp.text
 
     .projects
       .header
         | Projects
-      - @resume.projects_sorted.each do |project|
-        .project
-          .title
-            = project.title
-          .date
-            = project.start.strftime(dateformat)
-            = " - #{project.end.strftime(dateformat)}" if project.end != nil
-          .description
-            = project.desc
+      .content
+        - @resume.projects_sorted.each do |project|
+          .project
+            .title
+              = project.title
+            .date
+              = project.start.strftime(dateformat)
+              = " - #{project.end.strftime(dateformat)}" if project.end != nil
+            .description
+              = project.desc
 
     .skills
       .header
         | Skills
-      - @resume.skill.each_with_index do |skill, index|
-        span.skill
-          = skill.name
+      .content
+        - @resume.skill.each_with_index do |skill, index|
+          .skill
+            = skill.name
