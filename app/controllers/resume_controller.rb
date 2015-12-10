@@ -77,7 +77,14 @@ class ResumeController < ApplicationController
     @resume = Resume.where(id: params['id']).first
     @jars = @resume.get_relevant_jobs_and_responsibilities
     html = render_to_string 'export_html', layout: false, content_type: 'text/html'
-    kit = PDFKit.new(html, :page_size => 'Letter')
+    kit = PDFKit.new(html, {
+      :page_size => 'Letter',
+      :margin_top => '0in',
+      :margin_right => '0in',
+      :margin_bottom => '0in',
+      :margin_left => '0in'
+    })
+    kit.stylesheets << "./public#{@resume.stylesheet_file}"
     pdf = kit.to_pdf
     send_data pdf, {filename: "#{@resume.name}.pdf", type: 'application/pdf'}
   end
