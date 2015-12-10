@@ -1,42 +1,48 @@
 / These options should probably be moved to the edit resume menu
 - dateformat =  "%b %d, %Y"
+doctype html
+html
+  head
+    link rel="stylesheet" type="text/css" href=@resume.stylesheet_file
+  body
+    .contact
+      .contactname.header
+        = @resume.contactname
+      - [:email, :phone, :address, :website].each do |f|
+        div class=f
+        = @resume.send f
 
-.contact
-  - [:contactname, :email, :phone, :address, :website].each do |f|
-    div class=f
-    = @resume.send f
-.history
-  .header
-    | Professional History
-  - @jars.each do |job, resps|
-    .job
-      .company
-        = job.company
-      .date
-        = job.start.strftime(dateformat)
-        = " - #{job.end.strftime(dateformat)}" if job.end != nil
-      .responsibilities
-        - resps.each do |resp|
-          .responsibility
-            = resp.text
+    .history
+      .header
+        | Professional History
+      - @jars.each do |job, resps|
+        .job
+          .company
+            = job.company
+          .date
+            = job.start.strftime(dateformat)
+            = " - #{job.end.strftime(dateformat)}" if job.end != nil
+          .responsibilities
+            - resps.each do |resp|
+              .responsibility
+                = resp.text
 
-.projects
-  .header
-    | Projects
-    - @resume.projects_sorted.each do |project|
-      .project
-        .title
-          = project.title
-        .date
-          = project.start.strftime(dateformat)
-          = " - #{project.end.strftime(dateformat)}" if project.end != nil
-        .description
-          = project.desc
+    .projects
+      .header
+        | Projects
+      - @resume.projects_sorted.each do |project|
+        .project
+          .title
+            = project.title
+          .date
+            = project.start.strftime(dateformat)
+            = " - #{project.end.strftime(dateformat)}" if project.end != nil
+          .description
+            = project.desc
 
-.skills
-  .header
-    | Skills
-  .skills
-    - @resume.skill.each_with_index do |skill, index|
-      span.skill
-        = skill.name
+    .skills
+      .header
+        | Skills
+      - @resume.skill.each_with_index do |skill, index|
+        span.skill
+          = skill.name
