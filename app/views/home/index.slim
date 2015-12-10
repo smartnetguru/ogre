@@ -21,6 +21,8 @@
             td
               = link_to 'X', "/job/#{job.id}/delete"
 
+br
+
 #resume-section
   #create-resume-section
     = link_to t('create_a_resume'), :new_resume
@@ -43,6 +45,8 @@
               = resume.desc_text
             td
               = link_to 'X', "/resume/#{resume.id}/delete"
+
+br
 
 #projects-section
   #new-project-section

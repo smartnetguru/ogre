@@ -72,5 +72,12 @@ project1 = Project.create({
   start: "13/08/1942",
   end: "15/08/1947"
 })
-
 project1.resumes.push resume
+
+# Project associated with a resume
+project2 = Project.create({
+  user: user,
+  title: 'Venus Project',
+  desc: 'Acted as friction to prevent naive utopian agenda from gaining traction',
+  start: "1994"
+})
