@@ -63,3 +63,13 @@ end
   })
   resp.resumes.push(resume) if i % 2 == 0
 end
+
+# Project associated with a resume
+project1 = Project.create({
+  title: 'Manhattan Project',
+  desc: 'Assisted in project dedicated to alternative solutions to national disagreements',
+  start: "13/08/1942",
+  end: "15/08/1947"
+})
+
+project1.resumes.push resume
