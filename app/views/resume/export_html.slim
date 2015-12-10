@@ -24,8 +24,7 @@ html
             .company
               = job.company
             .date
-              = job.start.strftime(dateformat)
-              = " - #{job.end.strftime(dateformat)}" if job.end != nil
+              = job.date_text
             .responsibilities
               - resps.each do |resp|
                 .responsibility
