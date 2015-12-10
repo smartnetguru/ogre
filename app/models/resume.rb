@@ -1,5 +1,6 @@
 class Resume < ActiveRecord::Base
   belongs_to :user
+  has_many :skill
   has_and_belongs_to_many :responsibilitys #not sure how to make this railsy
   has_and_belongs_to_many :projects
 

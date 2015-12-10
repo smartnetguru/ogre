@@ -1,13 +1,29 @@
-= surround_with_box(@resume.contactname, 50)
+- width = 50
+- tab = "    "
+= surround_with_box(@resume.contactname, width)
 - [:email, :phone, :address, :website].each do |f|
   - output = @resume.send f
-  - output.gsub!(/\n/, "\n\t\t")
+  - output.gsub!(/\n/, "\n#{tab*2}")
   - if output != nil and output != ""
-    = "\t#{output}\n"
+    = "#{tab}#{output}\n"
 = "\n"
-= surround_with_box("Professional History", 50)
+
+= surround_with_box "Professional History"
 - @jars.each do |job, resps|
-  = "\t#{job.company}\n"
+  = "#{tab}#{job.company}\n"
   - resps.each do |resp|
-    = raw "\t\t> #{resp.text}\n"
+    = raw "#{tab*2}> #{resp.text}\n"
   = "\n"
+
+= surround_with_box "Projects"
+- @resume.projects.each do |project|
+  = "#{tab}#{project.title}\n"
+  = raw "#{tab*2}> #{project.desc}\n"
+  = "\n"
+
+= surround_with_box "Skills"
+- @resume.skill.each_with_index do |skill, index|
+  = tab if index%2 == 0
+  = raw "> #{skill.name}"
+  = " "*(width/2 - skill.name.length)
+  = "\n" if index%2 == 1
