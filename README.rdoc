@@ -1,28 +1,36 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This web application is designed as a multiuser multi-resume manager
 
-Things you may want to cover:
+The concept:
+You've had several jobs where you've had a variety of responsibilities. Those
+responsibilities are not necessarily applicable to all of the jobs that you're
+applying for. This necessitates multiple resumes (as if updating one resume
+wasn't fun enough).
 
-* Ruby version
+There should be an area where you can list all of your jobs and the respective
+responsibilities in an easy way. Creating a resume should be as easy as cherry
+picking from a swath of responsibilities (with all of the other information
+autopopulating like what job it came from and when you worked etc). Now you
+have multiple resumes, what a nightmare if you have overlapping
+responsibilities in different resumes and you wanted to update all of them.
+The system should allow you to change wording in a central location and the
+changes should naturally propogate to the final resume.
 
-* System dependencies
+Ok, so they're easy to make, but realistically you're not working on your
+resume by yourself. Everyone is always asking someone to take a look at their
+resume.
 
-* Configuration
+The system should allow for easy sharing of existing resumes (without the need
+for registration) for review and modification purposes.
 
-* Database creation
+Now you have multiple refined resumes in an object oriented web based system.
+You go to apply and you see one employer asking for a PDF, another for a DOC,
+and yet another for a resume in plain text. If you've tried copying and
+pasting your resume from an existing format into any other format, you'll know
+why this is a problem.
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+You have 10 resumes (because of how easy they are to make now) and you need to
+be able to export them in any format, because that's what the real world
+requires. There should exist a single click solution for exporting to any of
+the popular formats.
