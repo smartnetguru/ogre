@@ -34,3 +34,8 @@ You have 10 resumes (because of how easy they are to make now) and you need to
 be able to export them in any format, because that's what the real world
 requires. There should exist a single click solution for exporting to any of
 the popular formats.
+
+The takeaway:
+* It should be easy to make changes to multiple resumes
+* It should be easy to get help with these resumes
+* It should be easy to present these resumes to employers
