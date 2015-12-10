@@ -46,7 +46,8 @@ br
             td
               = resume.desc_text
             td
-              | PDF
+              = link_to "/resume/#{resume.id}/pdf"
+                | PDF
             td
               | DOC
             td
