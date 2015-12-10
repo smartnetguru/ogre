@@ -21,6 +21,7 @@ class ResumeController < ApplicationController
     @resume = Resume.where(id: params['id']).first
     @jobs = Job.where(user: current_user)
     @projects = Project.where(user: current_user)
+    @skills = Skill.where(resume: @resume)
   end
   def delete
     resume = Resume.where(id: params['id']).first
@@ -55,6 +56,11 @@ class ResumeController < ApplicationController
         @resume.projects.delete(project)
       end
     end
+    redirect_to edit_resume_path @resume
+  end
+  def new_skill
+    @resume = Resume.where(id: params['id']).first
+    @skill = Skill.create({resume: @resume})
     redirect_to edit_resume_path @resume
   end
 end

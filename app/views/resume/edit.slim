@@ -31,3 +31,13 @@
         span.description
           = project.desc
   = form.submit
+
+| Skills
+.skills
+  - @skills.each do |skill|
+    .skill
+      = form_for skill do |form|
+        = form.text_field :name
+        = link_to 'X', "/skill/#{skill.id}/delete"
+  = form_for @resume, url: {action: 'new_skill'} do |form|
+    = form.submit 'Add a Skill'
