@@ -14,8 +14,7 @@
 = surround_with_box "Professional History"
 - @jars.each do |job, resps|
   = "#{tab}#{job.company}\n"
-  = "#{tab*2}#{job.start.strftime(dateformat)}"
-  = " - #{job.end.strftime(dateformat)}" if job.end != nil
+  = "#{tab*2}#{job.date_text}"
   = "\n"
   - resps.each do |resp|
     = raw "#{tab*2}> #{resp.text}\n"

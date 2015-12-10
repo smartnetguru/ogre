@@ -28,4 +28,11 @@ class Resume < ActiveRecord::Base
       project.start
     end.reverse
   end
+  def stylesheet_file
+    # This is important for the following reasons
+    # - PDF export will want either the file name or the actuall css to load
+    # - It makes export to HTML easier work with render layout: false
+    # - In the future, there will probably be resume specific CSS files
+    ActionController::Base.helpers.asset_path 'resume/default.sass'
+  end
 end

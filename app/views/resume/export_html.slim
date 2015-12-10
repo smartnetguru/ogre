@@ -1,0 +1,53 @@
+/ These options should probably be moved to the edit resume menu
+- dateformat =  "%b %d, %Y"
+doctype html
+html
+  head
+    link rel="stylesheet" type="text/css" href=@resume.stylesheet_file
+  body.exported
+    .contact
+      .contactname.header
+        = @resume.contactname
+      .content
+        - [:email, :phone, :address, :website].each do |f|
+          div class=f
+            .label
+              = t("resume.#{f}")
+            = @resume.send f
+
+    .history
+      .header
+        | Professional History
+      .content
+        - @jars.each do |job, resps|
+          .job
+            .company
+              = job.company
+            .date
+              = job.date_text
+            .responsibilities
+              - resps.each do |resp|
+                .responsibility
+                  = resp.text
+
+    .projects
+      .header
+        | Projects
+      .content
+        - @resume.projects_sorted.each do |project|
+          .project
+            .title
+              = project.title
+            .date
+              = project.start.strftime(dateformat)
+              = " - #{project.end.strftime(dateformat)}" if project.end != nil
+            .description
+              = project.desc
+
+    .skills
+      .header
+        | Skills
+      .content
+        - @resume.skill.each_with_index do |skill, index|
+          .skill
+            = skill.name

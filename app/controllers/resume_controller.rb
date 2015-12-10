@@ -68,4 +68,9 @@ class ResumeController < ApplicationController
     @jars = @resume.get_relevant_jobs_and_responsibilities
     render layout: false, content_type: 'text/plain'
   end
+  def export_html
+    @resume = Resume.where(id: params['id']).first
+    @jars = @resume.get_relevant_jobs_and_responsibilities
+    render layout: false, content_type: 'text/html'
+  end
 end
