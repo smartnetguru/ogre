@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   get 'resume/:id/txt' => 'resume#export_txt'
   get 'resume/:id/html' => 'resume#export_html'
+  get 'resume/:id/pdf' => 'resume#export_pdf'
 
   patch 'resume/:id/update_resps' => 'resume#update_resps'
   patch 'resume/:id/update_projects' => 'resume#update_projects'

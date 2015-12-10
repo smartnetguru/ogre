@@ -6,6 +6,7 @@ gem 'omniauth'
 gem 'dotenv-rails'
 gem 'pry'
 gem 'slim-rails'
+gem 'pdfkit'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
