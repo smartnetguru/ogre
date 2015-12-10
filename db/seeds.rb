@@ -137,10 +137,8 @@ job1 = Job.create({
 # Job3 responsibilities
 [
   'Managed web precence (Yelp, Facebook, Twitter)',
-  'Created business page www.tekk-support.com on personal server including a contact page \
-  backed by google\'s SMTP library and dynamic based on device',
-  'Brought in clients through grassroots advertising partnerships with local businesses \
-  and a successful flyering campaign'
+  'Created business page www.tekk-support.com on personal server including a contact page backed by google\'s SMTP library and dynamic based on device',
+  'Brought in clients through grassroots advertising partnerships with local businesses and a successful flyering campaign'
 ].each_with_index do |res, i|
   resp = Responsibility.create({
     job_id: job1.id,
@@ -151,11 +149,9 @@ end
 
 # Job 2 responsibilities
 [
-  'Rethemed Sir Trevor JS (a library for content management that has no built \
-  in theming functionality',
+  'Rethemed Sir Trevor JS (a library for content management that has no built in theming functionality',
   'Extended Sir Trevor JS with custom blocks including arbitrary file upload',
-  'Organized SASS files for one rails app deployed to two places with different themes \
-  with asset precompilation based on environment variables',
+  'Organized SASS files for one rails app deployed to two places with different themes with asset precompilation based on environment variables',
   'Used AWS JavaScript SDK for client side uploading (progress bar + bypassing our server for performance)',
   'Used Shapeshift and Draggable jQuery libraries to create trough-like user interface',
   'Created jQuery plugin for autosave dialog functionality (comparable to Gmail\'s saving/saved dialog)',
@@ -172,14 +168,10 @@ end
 
 # Job 3 responsibilities
 [
-  'Designed and implemented tools for provisioning and managing virtual machines and routers \
-  to simulate specific network conditions',
-  'Created a web frontend for these tools including user authentication that allowed users to \
-  reserve computing time with a specifically configured network',
-  'Implemented system monitoring to ensure availability of server (physical state through IPMI, \
-  ping availability, and shell access)',
-  'Automated creation of virtual machines including user and software configuration with a \
-  single BASH command (for use by admins)'
+  'Designed and implemented tools for provisioning and managing virtual machines and routers to simulate specific network conditions',
+  'Created a web frontend for these tools including user authentication that allowed users to reserve computing time with a specifically configured network',
+  'Implemented system monitoring to ensure availability of server (physical state through IPMI, ping availability, and shell access)',
+  'Automated creation of virtual machines including user and software configuration with a single BASH command (for use by admins)'
 ].each_with_index do |res, i|
   resp = Responsibility.create({
     job_id: job3.id,

@@ -1,10 +1,13 @@
-= "#{@resume.contactname}\n"
+= surround_with_box(@resume.contactname, 50)
 - [:email, :phone, :address, :website].each do |f|
   - output = @resume.send f
   - output.gsub!(/\n/, "\n\t\t")
   - if output != nil and output != ""
     = "\t#{output}\n"
 = "\n"
-= surround_with_box("Professional History", 20)
+= surround_with_box("Professional History", 50)
 - @jars.each do |job, resps|
-  = job.company
+  = "\t#{job.company}\n"
+  - resps.each do |resp|
+    = raw "\t\t> #{resp.text}\n"
+  = "\n"
