@@ -22,7 +22,7 @@
   = "\n"
 
 = surround_with_box "Projects"
-- @resume.projects.each do |project|
+- @resume.projects_sorted.each do |project|
   = "#{tab}#{project.title}\n"
   = "#{tab*2}#{project.start.strftime(dateformat)}"
   = " - #{project.end.strftime(dateformat)}" if project.end != nil

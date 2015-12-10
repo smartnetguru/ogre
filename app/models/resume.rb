@@ -18,6 +18,14 @@ class Resume < ActiveRecord::Base
       retval[resp.job] = [] if (retval[resp.job] == nil)
       retval[resp.job].push(resp)
     end
+    retval = retval.sort_by do |job, resp|
+      job.start
+    end.reverse
     return retval
+  end
+  def projects_sorted
+    projects.sort_by do |project|
+      project.start
+    end.reverse
   end
 end

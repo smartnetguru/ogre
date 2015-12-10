@@ -209,7 +209,7 @@ project4 = Project.create({
   user: user,
   title: 'IDF Code Breaker Challenge',
   desc: 'Placed first in timed cipher-cracking competition hosted by Intel',
-  start: "24/09/09"
+  start: "24/09/2009"
 })
 project4.resumes.push resume
 
