@@ -7,6 +7,7 @@ gem 'dotenv-rails'
 gem 'pry'
 gem 'slim-rails'
 gem 'pdfkit'
+gem 'wkhtmltopdf-binary'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
