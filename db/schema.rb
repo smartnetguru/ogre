@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20151210054617) do
   end
 
   create_table "projects", force: :cascade do |t|
+    t.integer  "user_id"
     t.string   "title"
     t.string   "desc"
     t.date     "start"

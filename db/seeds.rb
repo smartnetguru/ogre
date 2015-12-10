@@ -66,6 +66,7 @@ end
 
 # Project associated with a resume
 project1 = Project.create({
+  user: user,
   title: 'Manhattan Project',
   desc: 'Assisted in project dedicated to alternative solutions to national disagreements',
   start: "13/08/1942",

@@ -1,0 +1,7 @@
+| Edit
+= form_for @project do |form|
+  - [:title, :desc, :start, :end].each do |field|
+    .field
+      = form.label field
+      = form.text_field field
+  = form.submit

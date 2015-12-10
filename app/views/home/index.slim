@@ -20,6 +20,7 @@
               = job.position
             td
               = link_to 'X', "/job/#{job.id}/delete"
+
 #resume-section
   #create-resume-section
     = link_to t('create_a_resume'), :new_resume
@@ -42,3 +43,22 @@
               = resume.desc_text
             td
               = link_to 'X', "/resume/#{resume.id}/delete"
+
+#projects-section
+  #new-project-section
+    = link_to t('add_a_project'), :new_project
+  #your-projects-section
+    = t 'your_projects'
+    #jobs
+      table
+        tr
+          th
+            = t 'title'
+          th
+            = t 'delete'
+        - current_user.project.each do |project|
+          tr
+            td
+              = link_to project.title, edit_project_path(project)
+            td
+              = link_to 'X', "/project/#{project.id}/delete"

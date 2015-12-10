@@ -25,6 +25,9 @@ Rails.application.routes.draw do
   get 'responsibility/:id/delete' => 'responsibility#delete'
   resources :responsibility
 
+  get 'project/:id/delete' => 'project#delete'
+  resources :project
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
