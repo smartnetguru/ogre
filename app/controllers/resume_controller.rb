@@ -88,4 +88,9 @@ class ResumeController < ApplicationController
     pdf = kit.to_pdf
     send_data pdf, {filename: "#{@resume.name}.pdf", type: 'application/pdf'}
   end
+  def export_doc
+    @resume = Resume.where(id: params['id']).first
+    @jars = @resume.get_relevant_jobs_and_responsibilities
+    render layout: false, content_type: 'text/html'
+  end
 end
