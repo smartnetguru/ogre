@@ -23,6 +23,31 @@
 
 br
 
+#education-section
+  #add-education-section
+    = link_to t('add_an_education'), :new_education
+  #your-educations-section
+    = t 'your_educations'
+    #educations
+      table
+        tr
+          th
+            = t 'school'
+          th
+            = t 'degree'
+          th
+            = t 'delete'
+        - current_user.education.each do |education|
+          tr
+            td
+              = link_to education.school, edit_education_path(education)
+            td
+              = education.degree
+            td
+              = link_to 'X', "/education/#{education.id}/delete"
+
+br
+
 #resume-section
   #create-resume-section
     = link_to t('create_a_resume'), :new_resume
