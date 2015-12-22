@@ -1,0 +1,8 @@
+| Edit
+= form_for @education do |form|
+  - [:school, :start, :end, :degree].each do |field|
+    .field
+      = form.label field
+      = form.text_field field
+  = form.submit
+

@@ -19,6 +19,7 @@ class ResumeController < ApplicationController
   end
   def edit
     @resume = Resume.where(id: params['id']).first
+    @educations = Education.where(user_id: current_user.id)
     @jobs = Job.where(user: current_user)
     @projects = Project.where(user: current_user)
     @skills = Skill.where(resume: @resume)
@@ -31,6 +32,19 @@ class ResumeController < ApplicationController
     # doesn't work here. I really hope it's not part of a
     # bigger problem
     redirect_to '/'
+  end
+  def update_educations
+    @resume = Resume.where(id: params['id']).first
+    params['education'].each do |http_resp|
+      education = Education.where(id: http_resp[0].to_i).first
+      related = http_resp[1] == '1'
+      if related then
+        @resume.educations.append(education)
+      else
+        @resume.educations.delete(education)
+      end
+    end
+    redirect_to edit_resume_path @resume
   end
   def update_resps
     @resume = Resume.where(id: params['id']).first

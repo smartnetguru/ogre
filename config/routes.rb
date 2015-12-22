@@ -18,6 +18,10 @@ Rails.application.routes.draw do
   get 'resume/:id/pdf' => 'resume#export_pdf'
   get 'resume/:id/doc' => 'resume#export_doc'
 
+  get 'education/:id/delete' => 'education#delete'
+  resources :education
+
+  patch 'resume/:id/update_educations' => 'resume#update_educations'
   patch 'resume/:id/update_resps' => 'resume#update_resps'
   patch 'resume/:id/update_projects' => 'resume#update_projects'
   patch 'resume/:id/new_skill' => 'resume#new_skill'
