@@ -39,7 +39,7 @@ class ResumeController < ApplicationController
       education = Education.where(id: http_resp[0].to_i).first
       related = http_resp[1] == '1'
       if related then
-        @resume.educations.append(education)
+        @resume.educations.append(education) if @resume.educations.include? education
       else
         @resume.educations.delete(education)
       end
@@ -52,7 +52,7 @@ class ResumeController < ApplicationController
       resp = Responsibility.where(id: http_resp[0].to_i).first
       related = http_resp[1] == '1'
       if related then
-        @resume.responsibilitys.append(resp)
+        @resume.responsibilitys.append(resp) if not @resume.responsibilitys.include? resp
       else
         @resume.responsibilitys.delete(resp)
       end
@@ -65,7 +65,7 @@ class ResumeController < ApplicationController
       project = Project.where(id: http_resp[0].to_i).first
       related = http_resp[1] == '1'
       if related then
-        @resume.projects.append(project)
+        @resume.projects.append(project) if not @resume.projects.include? project
       else
         @resume.projects.delete(project)
       end
