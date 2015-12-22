@@ -1,4 +1,5 @@
 class JobController < ApplicationController
+  before_action :authenticate_user!
   def new
     job = Job.create user_id: current_user.id
     if job.valid?

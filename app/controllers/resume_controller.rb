@@ -1,4 +1,5 @@
 class ResumeController < ApplicationController
+  before_action :authenticate_user!
   def new
     resume = Resume.create user_id: current_user.id
     if resume.valid?

@@ -1,4 +1,5 @@
 class EducationController < ApplicationController
+  before_action :authenticate_user!
   def new
     education = Education.create user_id: current_user.id
     if education.valid?
