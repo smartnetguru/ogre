@@ -226,3 +226,20 @@ project4.resumes.push resume
     name: skill
   })
 end
+
+education = Education.create({
+  user_id: user.id,
+  school: "West Contra Costa Adult Education",
+  degree: "General Education Diploma",
+  start: "19/3/2009"
+})
+resume.educations.push education
+
+education = Education.create({
+  user_id: user.id,
+  school: "Contra Costa College",
+  degree: "Pursued Associates Degree in Computer Science",
+  start: "2006",
+  end: "2011"
+})
+resume.educations.push education
