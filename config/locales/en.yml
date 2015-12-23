@@ -30,3 +30,6 @@ en:
   position: 'Position'
   delete: 'Delete'
   blank: 'Blank'
+  home: 'Home'
+  sign_out: 'Sign Out'
+  brand: 'ResMan'

@@ -1,3 +1,11 @@
-.navbar
-  = link_to 'Home', root_path
-  = link_to 'Sign Out', "/sign_out"
+nav.navbar.navbar-default
+  .container-fluid
+    .navbar-header
+      a.navbar-brand
+        = t 'brand'
+    .collapse.navbar-collapse
+      ul.nav.navbar-nav.navbar-right
+        li
+          = link_to t('home'), root_path
+        li
+          = link_to t('sign_out'), "/sign_out"
