@@ -1,4 +1,5 @@
 class ProjectController < ApplicationController
+  before_action :authenticate_user!
   def new
     project = Project.create user: current_user
     if project.valid?
