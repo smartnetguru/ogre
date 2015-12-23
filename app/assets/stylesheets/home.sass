@@ -1,16 +1,76 @@
 $pagebreak: 768px
 
 #home-page
+  .accordion-header
+    border-radius: 0px
+  .accordion-body
+    padding: 0px
   .col-header
     font-weight: 600
     text-align: center
-  #export-buttons a
+  .export-buttons a
     margin: 0px 3px 0px 3px
-  .resume.row
+
+  .resume,
+  .job,
+  .project,
+  .education
     border-top-color: #aaa
     border-top-style: solid
     border-top-width: 1px
-  .resume.row:last-child
+    padding: 3px 0px 3px 0px
+    > span
+      display: inline-block
+
+  .resume:first-child,
+  .job:first-child,
+  .project:first-child,
+  .education:first-child
+    border-top-style: none
+
+  .resume:last-child,
+  .job:last-child,
+  .project:last-child,
+  .education:last-child
     border-bottom-color: #aaa
     border-bottom-style: solid
     border-bottom-width: 1px
+
+  .resume
+    .name
+      font-weight: 600
+      width: 30%
+    .description
+      font-style: italic
+      width: 30%
+    .export-buttons
+      width: 20%
+    .delete
+      width: 20%
+
+  .job
+    .company
+      font-weight: 600
+      width: 40%
+    .position
+      font-style: italic
+      width: 40%
+    .delete
+      width: 20%
+
+  .project
+    .title
+      font-weight: 600
+      width: 80%
+    .delete
+      width: 20%
+
+  .education
+    .school
+      font-weight: 600
+      width: 40%
+    .degree
+      font-style: italic
+      width: 40%
+    .delete
+      width: 20%
