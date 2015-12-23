@@ -1,9 +1,15 @@
 nav.navbar.navbar-default
   .container-fluid
     .navbar-header
+      button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#pagenavbar" aria-expanded="false"
+        span class="sr-only"
+          = t 'toggle_navigation'
+        span class="icon-bar"
+        span class="icon-bar"
+        span class="icon-bar"
       a.navbar-brand
         = t 'brand'
-    .collapse.navbar-collapse
+    #pagenavbar.collapse.navbar-collapse
       ul.nav.navbar-nav.navbar-right
         li
           = link_to t('home'), root_path

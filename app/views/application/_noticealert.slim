@@ -1,7 +1,7 @@
 .notices
   - if not notice.nil?
-    p.notice
+    .notice.alert.alert-info
       = notice
   - if not alert.nil?
-    p.alert
+    .alert.alert-danger
       = alert
