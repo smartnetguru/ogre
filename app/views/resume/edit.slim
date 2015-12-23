@@ -1,59 +1,95 @@
-| Edit
-= form_for @resume do |form|
-  - [:name, :desc, :website, :email, :contactname, :phone, :address].each do |field|
-    .field
-      = form.label field
-      = form.text_field field
-  = form.submit
+.container#edit-resume
+  .row
+    .col-md-12
+      h3.center
+        = t 'basic_information'
+  = form_for @resume do |form|
+    - [:name, :desc, :website, :email, :contactname, :phone, :address].each do |field|
+      .row
+        .col-md-2.align-right
+          = form.label field
+        .col-md-4
+          = form.text_field field
+    .row
+      .col-md-4.col-md-offset-2
+        = form.submit
 
-| Education
-= form_for @resume, url: {action: 'update_educations'} do |form|
-  - @educations.each do |education|
-    .education
-        = hidden_field_tag "education[#{education.id}]", '0'
-        = check_box_tag "education[#{education.id}]", '1', @resume.educations.include?(education)
-        span.school
-          = "#{education.school}: "
-        span.degree
-          = education.degree
-        span.start
-          = education.start
-        span.end
-          = education.end
-  = form.submit
-
-| Jobs
-= form_for @resume, url: {action: 'update_resps'} do |form|
-  - @jobs.each do |job|
-    .job
-      .header
-        = "#{job.company} - #{job.position}"
-      .responsibilities
-        - job.responsibility.each do |resp|
-          .responsibility
+  .row
+    .col-md-12
+      h3.center
+        = t 'education'
+  = form_for @resume, url: {action: 'update_educations'} do |form|
+    - @educations.each do |education|
+      .row
+        .col-md-2.align-right
+          = hidden_field_tag "education[#{education.id}]", '0'
+          = check_box_tag "education[#{education.id}]", '1', @resume.educations.include?(education)
+        .col-md-10
+          .education
+            span.school
+              = "#{education.school}: "
+            span.degree
+              = education.degree
+            span.date
+              = "#{education.start} - #{education.end}"
+    .row
+      .col-md-4.col-md-offset-2
+        = form.submit
+  .row
+    .col-md-12
+      h3.center
+        = t 'jobs'
+  = form_for @resume, url: {action: 'update_resps'} do |form|
+    - @jobs.each do |job|
+      .row
+        .col-md-12
+          span.company
+            = "#{job.company}"
+          span.position
+            = "(#{job.position})"
+      - job.responsibility.each do |resp|
+        .row
+          .col-md-2.align-right
             = hidden_field_tag "resp[#{resp.id}]", '0'
             = check_box_tag "resp[#{resp.id}]", '1', @resume.responsibilitys.include?(resp)
+          .col-md-10
             = resp.text
-  = form.submit
+    .row
+      .col-md-4.col-md-offset-2
+        = form.submit
 
-| Projects
-= form_for @resume, url: {action: 'update_projects'} do |form|
-  - @projects.each do |project|
-    .project
-        = hidden_field_tag "project[#{project.id}]", '0'
-        = check_box_tag "project[#{project.id}]", '1', @resume.projects.include?(project)
-        span.title
-          = "#{project.title}: "
-        span.description
-          = project.desc
-  = form.submit
+  .row
+    .col-md-12
+      h3.center
+        = t 'projects'
+  = form_for @resume, url: {action: 'update_projects'} do |form|
+    - @projects.each do |project|
+      .row
+        .col-md-2.align-right
+          = hidden_field_tag "project[#{project.id}]", '0'
+          = check_box_tag "project[#{project.id}]", '1', @resume.projects.include?(project)
+        .col-md-10
+          span.title
+            = "#{project.title}:"
+          span.description
+            = project.desc
+    .row
+      .col-md-4.col-md-offset-2
+        = form.submit
 
-| Skills
-.skills
-  - @skills.each do |skill|
-    .skill
-      = form_for skill do |form|
-        = form.text_field :name
-        = link_to 'X', "/skill/#{skill.id}/delete"
-  = form_for @resume, url: {action: 'new_skill'} do |form|
-    = form.submit 'Add a Skill'
+  .row
+    .col-md-12
+      h3.center
+        = t 'skills'
+  .row
+    .col-md-10.col-md-offset-2
+      .skills
+        - @skills.each do |skill|
+          = form_for skill do |form|
+            .skill
+              = form.text_field :name
+              = link_to 'X', "/skill/#{skill.id}/delete"
+  .row
+    .col-md-4.col-md-offset-2
+      = form_for @resume, url: {action: 'new_skill'} do |form|
+        = form.submit 'Add a Skill'
