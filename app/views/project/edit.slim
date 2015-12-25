@@ -1,7 +1,15 @@
-| Edit
-= form_for @project do |form|
-  - [:title, :desc, :start, :end].each do |field|
-    .field
-      = form.label field
-      = form.text_field field
-  = form.submit
+.container#edit-project
+  .row
+    .col-md-12
+      h3.center
+        | Edit
+  = form_for @project do |form|
+    - [:title, :desc, :start, :end].each do |field|
+      .row
+        .col-md-2.align-right
+          = form.label field
+        .col-md-4
+          = form.text_field field
+    .row
+      .col-md-4.col-md-offset-2
+        = form.submit
