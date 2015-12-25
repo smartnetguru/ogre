@@ -25,7 +25,7 @@
                 = link_to "/resume/#{resume.id}/txt"
                   | TXT
               span.delete.center
-                = link_to 'X', "/resume/#{resume.id}/delete"
+                = link_to '', "/resume/#{resume.id}/delete", class: 'fa fa-times-circle'
   .row
     .col-md-12
       h4
@@ -43,7 +43,7 @@
               span.position
                 = job.position
               span.delete.center
-                = link_to 'X', "/job/#{job.id}/delete"
+                = link_to '', "/job/#{job.id}/delete", class: 'fa fa-times-circle'
   .row
     .col-md-12
       h4
@@ -59,7 +59,7 @@
               span.title
                 = link_to project.title, edit_project_path(project)
               span.delete.center
-                = link_to 'X', "/project/#{project.id}/delete"
+                = link_to '', "/project/#{project.id}/delete", class: 'fa fa-times-circle'
   .row
     .col-md-12
       h4
@@ -77,4 +77,4 @@
               span.degree
                 = education.degree
               span.delete.center
-                = link_to 'X', "/education/#{education.id}/delete"
+                = link_to '', "/education/#{education.id}/delete", class: 'fa fa-times-circle'
