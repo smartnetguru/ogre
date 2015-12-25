@@ -17,13 +17,13 @@
                 = resume.desc_text
               span.export-buttons.center
                 = link_to "/resume/#{resume.id}/pdf"
-                  | PDF
+                  = t 'export.pdf'
                 = link_to "/resume/#{resume.id}/doc"
-                  | DOC
+                  = t 'export.doc'
                 = link_to "/resume/#{resume.id}/html"
-                  | HTML
+                  = t 'export.html'
                 = link_to "/resume/#{resume.id}/txt"
-                  | TXT
+                  = t 'export.txt'
               span.delete.center
                 = link_to '', "/resume/#{resume.id}/delete", class: 'fa fa-times-circle'
   .row

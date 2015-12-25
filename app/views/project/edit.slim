@@ -2,7 +2,7 @@
   .row
     .col-md-12
       h3.center
-        | Edit
+        = t 'edit_project'
   = form_for @project do |form|
     - [:title, :desc, :start, :end].each do |field|
       .row

@@ -2,7 +2,7 @@
   .row
     .col-md-12
       h3.center
-        | Edit Job
+        = t 'edit_job'
   = form_for @job do |form|
     - [:company, :position, :location, :start, :end].each do |field|
       .row
@@ -17,7 +17,7 @@
   .row
     .col-md-12
       h3.center
-        | Responsibilities
+        = t 'edit_responsibilities'
   - @job.responsibility.each do |resp|
     = form_for resp do |form|
       .row
