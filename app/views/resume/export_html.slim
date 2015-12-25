@@ -17,7 +17,7 @@ html
 
     .history
       .header
-        | Professional History
+        = t 'professional_history'
       .content
         - @jars.each do |job, resps|
           .job
@@ -32,7 +32,7 @@ html
 
     .projects
       .header
-        | Projects
+        = t 'projects'
       .content
         - @resume.projects_sorted.each do |project|
           .project
@@ -46,7 +46,7 @@ html
 
     .skills
       .header
-        | Skills
+        = t 'skills'
       .content
         - @resume.skill.each_with_index do |skill, index|
           .skill

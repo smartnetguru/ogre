@@ -12,12 +12,17 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'home#index'
+  get 'sign_out' => 'home#logout'
 
   get 'resume/:id/txt' => 'resume#export_txt'
   get 'resume/:id/html' => 'resume#export_html'
   get 'resume/:id/pdf' => 'resume#export_pdf'
   get 'resume/:id/doc' => 'resume#export_doc'
 
+  get 'education/:id/delete' => 'education#delete'
+  resources :education
+
+  patch 'resume/:id/update_educations' => 'resume#update_educations'
   patch 'resume/:id/update_resps' => 'resume#update_resps'
   patch 'resume/:id/update_projects' => 'resume#update_projects'
   patch 'resume/:id/new_skill' => 'resume#new_skill'

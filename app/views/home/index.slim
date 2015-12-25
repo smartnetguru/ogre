@@ -1,82 +1,80 @@
-#job-section
-  #job-resume-section
-    = link_to t('add_a_job'), :new_job
-  #your-jobs-section
-    = t 'your_jobs'
-    #jobs
-      table
-        tr
-          th
-            = t 'company'
-          th
-            = t 'position'
-          th
-            = t 'delete'
-        - current_user.job.each do |job|
-          tr
-            td
-              = link_to job.company, edit_job_path(job)
-            td
-              = job.position
-            td
-              = link_to 'X', "/job/#{job.id}/delete"
-
-br
-
-#resume-section
-  #create-resume-section
-    = link_to t('create_a_resume'), :new_resume
-  #your-resumes-section
-    = t 'your_resumes'
-    #resumes
-      table
-        tr
-          th
-            = t 'name'
-          th
-            = t 'description'
-          th colspan=6
-            = t 'export'
-          th
-            = t 'delete'
-        - current_user.resume.each do |resume|
-          tr
-            td
-              = link_to resume.name_text, edit_resume_path(resume)
-            td
-              = resume.desc_text
-            td
-              = link_to "/resume/#{resume.id}/pdf"
-                | PDF
-            td
-              = link_to "/resume/#{resume.id}/doc"
-                | DOC
-            td
-              = link_to "/resume/#{resume.id}/html"
-                | HTML
-            td
-              = link_to "/resume/#{resume.id}/txt"
-                | TXT
-            td
-              = link_to 'X', "/resume/#{resume.id}/delete"
-
-br
-
-#projects-section
-  #new-project-section
-    = link_to t('add_a_project'), :new_project
-  #your-projects-section
-    = t 'your_projects'
-    #jobs
-      table
-        tr
-          th
-            = t 'title'
-          th
-            = t 'delete'
-        - current_user.project.each do |project|
-          tr
-            td
-              = link_to project.title, edit_project_path(project)
-            td
-              = link_to 'X', "/project/#{project.id}/delete"
+.container#home-page
+  .row
+    .col-md-12
+      h4
+        = link_to t('create_a_resume'), :new_resume
+  .row
+    .col-md-12
+      .accordion
+        .accordion-header
+          = t 'your_resumes'
+        .accordion-body
+          - current_user.resume.each do |resume|
+            .resume
+              span.name
+                = link_to resume.name_text, edit_resume_path(resume)
+              span.description
+                = resume.desc_text
+              span.export-buttons.center
+                = link_to "/resume/#{resume.id}/pdf"
+                  = t 'export.pdf'
+                = link_to "/resume/#{resume.id}/doc"
+                  = t 'export.doc'
+                = link_to "/resume/#{resume.id}/html"
+                  = t 'export.html'
+                = link_to "/resume/#{resume.id}/txt"
+                  = t 'export.txt'
+              span.delete.center
+                = link_to '', "/resume/#{resume.id}/delete", class: 'fa fa-times-circle'
+  .row
+    .col-md-12
+      h4
+        = link_to t('add_a_job'), :new_job
+  .row
+    .col-md-12
+      .accordion
+        .accordion-header
+          = t 'your_jobs'
+        .accordion-body
+          - current_user.job.each do |job|
+            .job
+              span.company
+                = link_to job.company, edit_job_path(job)
+              span.position
+                = job.position
+              span.delete.center
+                = link_to '', "/job/#{job.id}/delete", class: 'fa fa-times-circle'
+  .row
+    .col-md-12
+      h4
+        = link_to t('add_a_project'), :new_project
+  .row
+    .col-md-12
+      .accordion
+        .accordion-header
+          = t 'your_projects'
+        .accordion-body
+          - current_user.project.each do |project|
+            .project
+              span.title
+                = link_to project.title, edit_project_path(project)
+              span.delete.center
+                = link_to '', "/project/#{project.id}/delete", class: 'fa fa-times-circle'
+  .row
+    .col-md-12
+      h4
+        = link_to t('add_an_education'), :new_education
+  .row
+    .col-md-12
+      .accordion
+        .accordion-header
+          = t 'your_educations'
+        .accordion-body
+          - current_user.education.each do |education|
+            .education
+              span.school
+                = link_to education.school, edit_education_path(education)
+              span.degree
+                = education.degree
+              span.delete.center
+                = link_to '', "/education/#{education.id}/delete", class: 'fa fa-times-circle'

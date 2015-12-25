@@ -1,4 +1,5 @@
 class SkillController < ApplicationController
+  before_action :authenticate_user!
   def update
     new_skill = Hashie::Mash.new(params['skill'])
     @skill = Skill.where(id: params['id']).first
