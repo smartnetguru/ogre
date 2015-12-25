@@ -11,6 +11,7 @@ gem 'wkhtmltopdf-binary'
 gem 'pandoc-ruby'
 gem 'twitter-bootstrap-rails'
 gem 'jquery-ui-rails'
+gem 'fontawesome-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
