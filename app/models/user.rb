@@ -7,4 +7,5 @@ class User < ActiveRecord::Base
   has_many :resume
   has_many :job
   has_many :project
+  has_many :education
 end

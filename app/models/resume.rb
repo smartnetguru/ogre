@@ -3,6 +3,7 @@ class Resume < ActiveRecord::Base
   has_many :skill
   has_and_belongs_to_many :responsibilitys #not sure how to make this railsy
   has_and_belongs_to_many :projects
+  has_and_belongs_to_many :educations
 
   def name_text
     return I18n.t('blank') if name.nil? or name.empty?
