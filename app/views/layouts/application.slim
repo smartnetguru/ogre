@@ -2,14 +2,11 @@ doctype html
 html
   head
     title
-      | Resgen
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+      = t 'brand'
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
     = csrf_meta_tags
   body
     = render 'navbar'
-    p class="notice"
-      = notice
-    p class="alert"
-      = alert
+    = render 'noticealert'
     = yield
