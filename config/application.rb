@@ -23,5 +23,9 @@ module Resgen
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
     config.autoload_paths << Rails.root.join('lib')
+    case Rails.env
+    when "development"
+      config.web_console.whitelisted_ips = ENV['whitelisted_ip']
+    end
   end
 end
