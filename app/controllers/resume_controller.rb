@@ -24,6 +24,7 @@ class ResumeController < ApplicationController
     @jobs = Job.where(user: current_user)
     @projects = Project.where(user: current_user)
     @skills = Skill.where(resume: @resume)
+    @educations = @resume.educations
   end
   def delete
     resume = Resume.where(id: params['id']).first
@@ -86,6 +87,7 @@ class ResumeController < ApplicationController
   def export_html
     @resume = Resume.where(id: params['id']).first
     @jars = @resume.get_relevant_jobs_and_responsibilities
+    @educations = @resume.educations_sorted
     render layout: false, content_type: 'text/html'
   end
   def export_pdf

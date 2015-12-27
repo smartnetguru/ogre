@@ -29,6 +29,17 @@ class Resume < ActiveRecord::Base
       project.start
     end.reverse
   end
+  def educations_sorted
+    educations.sort_by do |education|
+      if education.start.nil?
+        education.start
+      elsif education.end.nil?
+        education.end
+      else
+        Date.at 0
+      end
+    end.reverse
+  end
   def stylesheet_file
     # This is important for the following reasons
     # - PDF export will want either the file name or the actuall css to load
