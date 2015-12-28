@@ -5,4 +5,9 @@ class Education < ActiveRecord::Base
     return "#{I18n.t 'education'} ##{id}" if school.nil? or school.empty?
     return school
   end
+
+  def degree_text
+    return "#{I18n.t 'no_degree'}" if degree.nil? or degree.empty?
+    return degree
+  end
 end

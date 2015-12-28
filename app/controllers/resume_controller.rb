@@ -24,7 +24,6 @@ class ResumeController < ApplicationController
     @jobs = Job.where(user: current_user)
     @projects = Project.where(user: current_user)
     @skills = Skill.where(resume: @resume)
-    @educations = @resume.educations
   end
   def delete
     resume = Resume.where(id: params['id']).first
