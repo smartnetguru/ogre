@@ -89,6 +89,7 @@ class ResumeController < ApplicationController
     @resume = Resume.where(id: params['id']).first
     @jars = @resume.get_relevant_jobs_and_responsibilities
     @educations = @resume.educations_sorted
+    @projects = @resume.projects_sorted
     render layout: false, content_type: 'text/html'
   end
   def export_pdf
