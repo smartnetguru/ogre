@@ -40,7 +40,7 @@ class ResumeController < ApplicationController
       education = Education.where(id: http_resp[0].to_i).first
       related = http_resp[1] == '1'
       if related then
-        @resume.educations.append(education) if @resume.educations.include? education
+        @resume.educations.append(education) if !@resume.educations.include? education
       else
         @resume.educations.delete(education)
       end
