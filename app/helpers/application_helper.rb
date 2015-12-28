@@ -1,4 +1,14 @@
 module ApplicationHelper
+  def best_fit_date(start, stop)
+    if !start.nil?
+      start
+    elsif !stop.nil?
+      stop
+    else
+      Time.at 0
+    end
+  end
+
   def pretty_date_range(start, stop)
     dateformat =  "%b %d, %Y"
     return '' if start.nil? and stop.nil?

@@ -1,4 +1,5 @@
 class Resume < ActiveRecord::Base
+  include ApplicationHelper
   belongs_to :user
   has_many :skill
   has_and_belongs_to_many :responsibilitys #not sure how to make this railsy
@@ -20,24 +21,18 @@ class Resume < ActiveRecord::Base
       retval[resp.job].push(resp)
     end
     retval = retval.sort_by do |job, resp|
-      job.start
+      best_fit_date job.start, job.end
     end.reverse
     return retval
   end
   def projects_sorted
     projects.sort_by do |project|
-      project.start
+      best_fit_date project.start, project.end
     end.reverse
   end
   def educations_sorted
     educations.sort_by do |education|
-      if education.start.nil?
-        education.start
-      elsif education.end.nil?
-        education.end
-      else
-        Date.at 0
-      end
+      best_fit_date education.start, education.end
     end.reverse
   end
   def stylesheet_file
