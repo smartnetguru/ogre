@@ -47,7 +47,7 @@
             - current_user.job.each do |job|
               .job
                 span.company
-                  = link_to job.company, edit_job_path(job)
+                  = link_to job.company_text, edit_job_path(job)
                 span.position
                   = job.position
                 span.delete.center
@@ -69,7 +69,7 @@
             - current_user.project.each do |project|
               .project
                 span.title
-                  = link_to project.title, edit_project_path(project)
+                  = link_to project.title_text, edit_project_path(project)
                 span.delete.center
                   = link_to '', "/project/#{project.id}/delete", class: 'fa fa-times-circle'
   .row
@@ -89,7 +89,7 @@
             - current_user.education.each do |education|
               .education
                 span.school
-                  = link_to education.school, edit_education_path(education)
+                  = link_to education.school_text, edit_education_path(education)
                 span.degree
                   = education.degree
                 span.delete.center
