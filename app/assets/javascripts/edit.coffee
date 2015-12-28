@@ -7,6 +7,6 @@ $ ->
     #education_start,
     #education_end
     ').datepicker
-    changeMonth: true,
-    changeYear: true,
+    changeMonth: true
+    changeYear: true
     dateFormat: 'yy-mm-dd'
