@@ -1,0 +1,5 @@
+nonroot can't map to port 80 because < 1024, so redirect 3000 port traffic to 80
+  iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 3000
+
+  iptables -t nat -L # Shows current rules
+  iptables -t nat -D PREROUTING n # Deletes the nth rule
