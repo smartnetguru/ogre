@@ -28,7 +28,7 @@ en:
   no_degree: 'No degree information listed'
   no_description: 'No description'
   no_position: 'Unlisted position'
-  no_resumes: 'You have not created any resumes yet'
+  no_resumes: 'You have not created any resumes yet. Add jobs, projects, and education history prior to creating a resume.'
   no_jobs: 'You have not added any jobs yet'
   no_projects: 'You have not added any projects yet'
   no_educations: 'You have not added educational history yet'
