@@ -94,6 +94,7 @@ class ResumeController < ApplicationController
   def export_pdf
     @resume = Resume.where(id: params['id']).first
     @jars = @resume.get_relevant_jobs_and_responsibilities
+    @educations = @resume.educations_sorted
     html = render_to_string 'export_html', layout: false, content_type: 'text/html'
     kit = PDFKit.new(html, {
       :page_size => 'Letter',
@@ -109,6 +110,7 @@ class ResumeController < ApplicationController
   def export_doc
     @resume = Resume.where(id: params['id']).first
     @jars = @resume.get_relevant_jobs_and_responsibilities
+    @educations = @resume.educations_sorted
     html = render_to_string 'export_html', layout: false, content_type: 'text/html'
     docx = PandocRuby.convert(html, :from => :html, :to => :docx)
     send_data docx, {filename: "#{@resume.name}.docx", type: 'application/msword'}

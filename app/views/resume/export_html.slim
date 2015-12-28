@@ -36,7 +36,7 @@ html
             .company
               = job.company
             .date
-              = job.date_text
+              = pretty_date_range job.start, job.end
             .responsibilities
               - resps.each do |resp|
                 .responsibility
