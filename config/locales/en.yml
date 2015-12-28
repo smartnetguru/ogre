@@ -20,6 +20,7 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  enter_to_save: 'Press Enter to save'
   resume: 'Resume'
   company: 'Company'
   project: 'Project'

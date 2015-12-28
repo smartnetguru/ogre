@@ -35,6 +35,26 @@
     .row
       .col-md-4.col-md-offset-2
         = form.submit
+
+  .row
+    .col-md-12
+      h3.center
+        = t 'projects'
+  = form_for @resume, url: {action: 'update_projects'} do |form|
+    - @projects.each do |project|
+      .row
+        .col-md-2.align-right
+          = hidden_field_tag "project[#{project.id}]", '0'
+          = check_box_tag "project[#{project.id}]", '1', @resume.projects.include?(project)
+        .col-md-10
+          span.title
+            = "#{project.title_text}:"
+          span.description
+            = project.desc_text
+    .row
+      .col-md-4.col-md-offset-2
+        = form.submit
+
   .row
     .col-md-12
       h3.center
@@ -68,27 +88,10 @@
 
   .row
     .col-md-12
-      h3.center
-        = t 'projects'
-  = form_for @resume, url: {action: 'update_projects'} do |form|
-    - @projects.each do |project|
-      .row
-        .col-md-2.align-right
-          = hidden_field_tag "project[#{project.id}]", '0'
-          = check_box_tag "project[#{project.id}]", '1', @resume.projects.include?(project)
-        .col-md-10
-          span.title
-            = "#{project.title_text}:"
-          span.description
-            = project.desc_text
-    .row
-      .col-md-4.col-md-offset-2
-        = form.submit
-
-  .row
-    .col-md-12
-      h3.center
-        = t 'skills'
+      .center
+        h3
+          = t 'skills'
+        = t 'enter_to_save'
   .row
     .col-md-10.col-md-offset-2
       .skills
