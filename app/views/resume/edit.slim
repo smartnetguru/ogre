@@ -55,11 +55,13 @@
       - else
         - job.responsibility.each do |resp|
           .row
-            .col-md-2.align-right
-              = hidden_field_tag "resp[#{resp.id}]", '0'
-              = check_box_tag "resp[#{resp.id}]", '1', @resume.responsibilitys.include?(resp)
-            .col-md-10
-              = resp.text
+            .col-md-10.col-md-offset-2
+              .resp
+                span.inputs
+                  = hidden_field_tag "resp[#{resp.id}]", '0'
+                  = check_box_tag "resp[#{resp.id}]", '1', @resume.responsibilitys.include?(resp)
+                span.text
+                  = resp.text
     .row
       .col-md-4.col-md-offset-2
         = form.submit
