@@ -9,23 +9,27 @@
         .accordion-header
           = t 'your_resumes'
         .accordion-body
-          - current_user.resume.each do |resume|
-            .resume
-              span.name
-                = link_to resume.name_text, edit_resume_path(resume)
-              span.description
-                = resume.desc_text
-              span.export-buttons.center
-                = link_to "/resume/#{resume.id}/pdf"
-                  = t 'export.pdf'
-                = link_to "/resume/#{resume.id}/doc"
-                  = t 'export.doc'
-                = link_to "/resume/#{resume.id}/html"
-                  = t 'export.html'
-                = link_to "/resume/#{resume.id}/txt"
-                  = t 'export.txt'
-              span.delete.center
-                = link_to '', "/resume/#{resume.id}/delete", class: 'fa fa-times-circle'
+          - if current_user.resume.empty?
+            .well
+              = t 'no_resumes'
+          - else
+            - current_user.resume.each do |resume|
+              .resume
+                span.name
+                  = link_to resume.name_text, edit_resume_path(resume)
+                span.description
+                  = resume.desc_text
+                span.export-buttons.center
+                  = link_to "/resume/#{resume.id}/pdf"
+                    = t 'export.pdf'
+                  = link_to "/resume/#{resume.id}/doc"
+                    = t 'export.doc'
+                  = link_to "/resume/#{resume.id}/html"
+                    = t 'export.html'
+                  = link_to "/resume/#{resume.id}/txt"
+                    = t 'export.txt'
+                span.delete.center
+                  = link_to '', "/resume/#{resume.id}/delete", class: 'fa fa-times-circle'
   .row
     .col-md-12
       h4
@@ -36,14 +40,18 @@
         .accordion-header
           = t 'your_jobs'
         .accordion-body
-          - current_user.job.each do |job|
-            .job
-              span.company
-                = link_to job.company, edit_job_path(job)
-              span.position
-                = job.position
-              span.delete.center
-                = link_to '', "/job/#{job.id}/delete", class: 'fa fa-times-circle'
+          - if current_user.job.empty?
+            .well
+              = t 'no_jobs'
+          - else
+            - current_user.job.each do |job|
+              .job
+                span.company
+                  = link_to job.company_text, edit_job_path(job)
+                span.position
+                  = job.position
+                span.delete.center
+                  = link_to '', "/job/#{job.id}/delete", class: 'fa fa-times-circle'
   .row
     .col-md-12
       h4
@@ -54,12 +62,16 @@
         .accordion-header
           = t 'your_projects'
         .accordion-body
-          - current_user.project.each do |project|
-            .project
-              span.title
-                = link_to project.title, edit_project_path(project)
-              span.delete.center
-                = link_to '', "/project/#{project.id}/delete", class: 'fa fa-times-circle'
+          - if current_user.project.empty?
+            .well
+              = t 'no_projects'
+          - else
+            - current_user.project.each do |project|
+              .project
+                span.title
+                  = link_to project.title_text, edit_project_path(project)
+                span.delete.center
+                  = link_to '', "/project/#{project.id}/delete", class: 'fa fa-times-circle'
   .row
     .col-md-12
       h4
@@ -70,11 +82,15 @@
         .accordion-header
           = t 'your_educations'
         .accordion-body
-          - current_user.education.each do |education|
-            .education
-              span.school
-                = link_to education.school, edit_education_path(education)
-              span.degree
-                = education.degree
-              span.delete.center
-                = link_to '', "/education/#{education.id}/delete", class: 'fa fa-times-circle'
+          - if current_user.education.empty?
+            .well
+              = t 'no_educations'
+          - else
+            - current_user.education.each do |education|
+              .education
+                span.school
+                  = link_to education.school_text, edit_education_path(education)
+                span.degree
+                  = education.degree
+                span.delete.center
+                  = link_to '', "/education/#{education.id}/delete", class: 'fa fa-times-circle'

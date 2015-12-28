@@ -9,6 +9,13 @@
 case Rails.env
 when "development"
   user = User.new
+  user.email = 'asdf@asdf.com'
+  user.password = 'asdfasdf'
+  user.password_confirmation = 'asdfasdf'
+  user.skip_confirmation!
+  user.save!
+
+  user = User.new
   user.email = 'foo@bar.com'
   user.password = 'asdfasdf'
   user.password_confirmation = 'asdfasdf'

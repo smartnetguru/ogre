@@ -5,60 +5,66 @@ html
     link rel="stylesheet" type="text/css" href=@resume.stylesheet_file
   body.exported
     .contact
-      .contactname.header
-        = @resume.contactname
+      - if !@resume.contactname.nil?
+        .contactname.header
+          = @resume.contactname
       .content
         - [:email, :phone, :address, :website].each do |f|
-          div class=f
-            .label
-              = t("resume.#{f}")
-            = @resume.send f
+          - if !@resume.send(f).nil?
+            div class=f
+              .label
+                = t("resume.#{f}")
+              = @resume.send f
 
-    .education-history
-      .header
-        = t 'education'
-      .content
-        - @educations.each do |education|
-          .education
-            span.school
-              = education.school
-            span.degree
-              = education.degree
-            span.date
-              = pretty_date_range education.start, education.end
+    - if !@educations.empty?
+      .education-history
+        .header
+          = t 'education'
+        .content
+          - @educations.each do |education|
+            .education
+              span.school
+                = education.school
+              span.degree
+                = education.degree
+              span.date
+                = pretty_date_range education.start, education.end
 
-    .history
-      .header
-        = t 'professional_history'
-      .content
-        - @jars.each do |job, resps|
-          .job
-            .company
-              = job.company
-            .date
-              = pretty_date_range job.start, job.end
-            .responsibilities
-              - resps.each do |resp|
-                .responsibility
-                  = resp.text
+    - if !@jars.empty?
+      .history
+        .header
+          = t 'professional_history'
+        .content
+          - @jars.each do |job, resps|
+            .job
+              .company
+                = job.company
+              .date
+                = pretty_date_range job.start, job.end
+              .responsibilities
+                - resps.each do |resp|
+                  .responsibility
+                    = resp.text
 
-    .projects
-      .header
-        = t 'projects'
-      .content
-        - @resume.projects_sorted.each do |project|
-          .project
-            .title
-              = project.title
-            .date
-              = pretty_date_range project.start, project.end
-            .description
-              = project.desc
+    - if !@projects.empty?
+      .projects
+        .header
+          = t 'projects'
+        .content
+          - @projects.each do |project|
+            .project
+              .title
+                = project.title
+              .date
+                = pretty_date_range project.start, project.end
+              .description
+                = project.desc
 
-    .skills
-      .header
-        = t 'skills'
-      .content
-        - @resume.skill.each_with_index do |skill, index|
-          .skill
-            = skill.name
+    - if !@resume.skill.empty?
+      .skills
+        .header
+          = t 'skills'
+        .content
+          - @resume.skill.each_with_index do |skill, index|
+            .skill
+              = skill.name
