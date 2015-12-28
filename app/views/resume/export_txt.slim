@@ -11,10 +11,17 @@
     = "#{tab}#{output}\n"
 = "\n"
 
+= surround_with_box "Education"
+- @educations.each do |education|
+  = "#{tab}#{education.school}\n"
+  = "#{tab*2}#{education.degree}\n" if !education.degree.empty?
+  = "#{tab*2}#{pretty_date_range education.start, education.end}"
+  = "\n"
+
 = surround_with_box "Professional History"
 - @jars.each do |job, resps|
   = "#{tab}#{job.company}\n"
-  = "#{tab*2}#{job.date_text}"
+  = "#{tab*2}#{pretty_date_range job.start, job.end}"
   = "\n"
   - resps.each do |resp|
     = raw "#{tab*2}> #{resp.text}\n"
