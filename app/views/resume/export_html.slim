@@ -5,12 +5,12 @@ html
     link rel="stylesheet" type="text/css" href=@resume.stylesheet_file
   body.exported
     .contact
-      - if !@resume.contactname.nil?
+      - if !@resume.contactname.blank?
         .contactname.header
           = @resume.contactname
       .content
         - [:email, :phone, :address, :website].each do |f|
-          - if !@resume.send(f).nil?
+          - if !@resume.send(f).blank?
             div class=f
               .label
                 = t("resume.#{f}")
@@ -46,7 +46,7 @@ html
                   .responsibility
                     = resp.text
 
-    - if !@projects.empty?
+    - if not @projects.blank?
       .projects
         .header
           = t 'projects'
