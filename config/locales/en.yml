@@ -20,6 +20,7 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  resume: 'Resume'
   no_resumes: 'You have not created any resumes yet'
   no_jobs: 'You have not added any jobs yet'
   no_projects: 'You have not added any projects yet'

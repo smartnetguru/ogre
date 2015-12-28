@@ -7,7 +7,7 @@ class Resume < ActiveRecord::Base
   has_and_belongs_to_many :educations
 
   def name_text
-    return I18n.t('blank') if name.nil? or name.empty?
+    return "#{I18n.t 'resume'} ##{id}" if name.nil? or name.empty?
     return name
   end
   def desc_text
