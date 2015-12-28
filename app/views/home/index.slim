@@ -10,7 +10,7 @@
           = t 'your_resumes'
         .accordion-body
           - if current_user.resume.empty?
-            .well
+            .no-objects.well
               = t 'no_resumes'
           - else
             - current_user.resume.each do |resume|
@@ -41,7 +41,7 @@
           = t 'your_jobs'
         .accordion-body
           - if current_user.job.empty?
-            .well
+            .no-objects.well
               = t 'no_jobs'
           - else
             - current_user.job.each do |job|
@@ -63,7 +63,7 @@
           = t 'your_projects'
         .accordion-body
           - if current_user.project.empty?
-            .well
+            .no-objects.well
               = t 'no_projects'
           - else
             - current_user.project.each do |project|
@@ -83,7 +83,7 @@
           = t 'your_educations'
         .accordion-body
           - if current_user.education.empty?
-            .well
+            .no-objects.well
               = t 'no_educations'
           - else
             - current_user.education.each do |education|
