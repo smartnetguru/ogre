@@ -1,5 +1,4 @@
 / These options should probably be moved to the edit resume menu
-- dateformat =  "%b %d, %Y"
 doctype html
 html
   head
@@ -15,6 +14,19 @@ html
               = t("resume.#{f}")
             = @resume.send f
 
+    .education-history
+      .header
+        = t 'education'
+      .content
+        - @educations.each do |education|
+          .education
+            span.school
+              = education.school
+            span.degree
+              = education.degree
+            span.date
+              = pretty_date_range education.start, education.end
+
     .history
       .header
         = t 'professional_history'
@@ -24,7 +36,7 @@ html
             .company
               = job.company
             .date
-              = job.date_text
+              = pretty_date_range job.start, job.end
             .responsibilities
               - resps.each do |resp|
                 .responsibility
@@ -39,8 +51,7 @@ html
             .title
               = project.title
             .date
-              = project.start.strftime(dateformat)
-              = " - #{project.end.strftime(dateformat)}" if project.end != nil
+              = pretty_date_range project.start, project.end
             .description
               = project.desc
 

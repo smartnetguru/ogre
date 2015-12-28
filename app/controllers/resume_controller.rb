@@ -24,6 +24,7 @@ class ResumeController < ApplicationController
     @jobs = Job.where(user: current_user)
     @projects = Project.where(user: current_user)
     @skills = Skill.where(resume: @resume)
+    @educations = @resume.educations
   end
   def delete
     resume = Resume.where(id: params['id']).first
@@ -81,16 +82,19 @@ class ResumeController < ApplicationController
   def export_txt
     @resume = Resume.where(id: params['id']).first
     @jars = @resume.get_relevant_jobs_and_responsibilities
+    @educations = @resume.educations_sorted
     render layout: false, content_type: 'text/plain'
   end
   def export_html
     @resume = Resume.where(id: params['id']).first
     @jars = @resume.get_relevant_jobs_and_responsibilities
+    @educations = @resume.educations_sorted
     render layout: false, content_type: 'text/html'
   end
   def export_pdf
     @resume = Resume.where(id: params['id']).first
     @jars = @resume.get_relevant_jobs_and_responsibilities
+    @educations = @resume.educations_sorted
     html = render_to_string 'export_html', layout: false, content_type: 'text/html'
     kit = PDFKit.new(html, {
       :page_size => 'Letter',
@@ -106,6 +110,7 @@ class ResumeController < ApplicationController
   def export_doc
     @resume = Resume.where(id: params['id']).first
     @jars = @resume.get_relevant_jobs_and_responsibilities
+    @educations = @resume.educations_sorted
     html = render_to_string 'export_html', layout: false, content_type: 'text/html'
     docx = PandocRuby.convert(html, :from => :html, :to => :docx)
     send_data docx, {filename: "#{@resume.name}.docx", type: 'application/msword'}
