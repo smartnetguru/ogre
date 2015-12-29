@@ -3,7 +3,7 @@ class ResponsibilityController < ApplicationController
     resp = Responsibility.where(id: params['id']).first
     resp.text = params['responsibility']['text']
     resp.save
-    redirect_to edit_job_path(resp.job)
+    render json: { errors: resp.errors }
   end
   def delete
     resp = Responsibility.where(id: params['id']).first

@@ -3,23 +3,20 @@
     .col-md-12
       h3.center
         = t 'edit_job'
-  = form_for @job do |form|
+  = form_for @job, remote: true do |form|
     - [:company, :position, :location, :start, :end].each do |field|
       .row
         .col-md-2.align-right
           = form.label field
         .col-md-4
           = form.text_field field
-    .row
-      .col-md-4.col-md-offset-2
-        = form.submit
 
   .row
     .col-md-12
       h3.center
         = t 'edit_responsibilities'
   - @job.responsibility.each do |resp|
-    = form_for resp do |form|
+    = form_for resp, remote: true do |form|
       .row
         .col-md-4.col-md-offset-2
           = form.text_field :text

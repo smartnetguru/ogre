@@ -3,22 +3,19 @@
     .col-md-12
       h3.center
         = t 'basic_information'
-  = form_for @resume do |form|
+  = form_for @resume, remote: true do |form|
     - [:name, :desc, :website, :email, :contactname, :phone, :address].each do |field|
       .row
         .col-md-2.align-right
           = form.label field
         .col-md-4
           = form.text_field field
-    .row
-      .col-md-4.col-md-offset-2
-        = form.submit
 
   .row
     .col-md-12
       h3.center
         = t 'education'
-  = form_for @resume, url: {action: 'update_educations'} do |form|
+  = form_for @resume, remote: true, url: {action: 'update_educations'} do |form|
     - @educations.each do |education|
       .row
         .col-md-2.align-right
@@ -32,15 +29,12 @@
               = education.degree_text
             span.date
               = pretty_date_range education.start, education.end
-    .row
-      .col-md-4.col-md-offset-2
-        = form.submit
 
   .row
     .col-md-12
       h3.center
         = t 'projects'
-  = form_for @resume, url: {action: 'update_projects'} do |form|
+  = form_for @resume, remote: true, url: {action: 'update_projects'} do |form|
     - @projects.each do |project|
       .row
         .col-md-2.align-right
@@ -51,15 +45,12 @@
             = "#{project.title_text}:"
           span.description
             = project.desc_text
-    .row
-      .col-md-4.col-md-offset-2
-        = form.submit
 
   .row
     .col-md-12
       h3.center
         = t 'jobs'
-  = form_for @resume, url: {action: 'update_resps'} do |form|
+  = form_for @resume, remote: true, url: {action: 'update_resps'} do |form|
     - @jobs.each do |job|
       .row
         .col-md-10.col-md-offset-2
@@ -82,9 +73,6 @@
                   = check_box_tag "resp[#{resp.id}]", '1', @resume.responsibilitys.include?(resp)
                 span.text
                   = resp.text
-    .row
-      .col-md-4.col-md-offset-2
-        = form.submit
 
   .row
     .col-md-12
@@ -96,7 +84,7 @@
     .col-md-10.col-md-offset-2
       .skills
         - @skills.each do |skill|
-          = form_for skill do |form|
+          = form_for skill, remote: true do |form|
             .skill
               = form.text_field :name
               = link_to '', "/skill/#{skill.id}/delete", class: 'fa fa-times-circle delete'

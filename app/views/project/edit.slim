@@ -3,13 +3,10 @@
     .col-md-12
       h3.center
         = t 'edit_project'
-  = form_for @project do |form|
+  = form_for @project, remote: true do |form|
     - [:title, :desc, :start, :end].each do |field|
       .row
         .col-md-2.align-right
           = form.label field
         .col-md-4
           = form.text_field field
-    .row
-      .col-md-4.col-md-offset-2
-        = form.submit

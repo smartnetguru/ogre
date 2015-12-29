@@ -16,7 +16,7 @@ class ResumeController < ApplicationController
       update_block[f] = new_resume.send f
     end
     @resume.update update_block
-    redirect_to edit_resume_path @resume
+    render json: { errors: @resume.errors }
   end
   def edit
     @resume = Resume.where(id: params['id']).first
@@ -45,7 +45,7 @@ class ResumeController < ApplicationController
         @resume.educations.delete(education)
       end
     end
-    redirect_to edit_resume_path @resume
+    render json: { errors: @resume.errors }
   end
   def update_resps
     @resume = Resume.where(id: params['id']).first
@@ -58,7 +58,7 @@ class ResumeController < ApplicationController
         @resume.responsibilitys.delete(resp)
       end
     end
-    redirect_to edit_resume_path @resume
+    render json: { errors: @resume.errors }
   end
   def update_projects
     @resume = Resume.where(id: params['id']).first
@@ -71,7 +71,7 @@ class ResumeController < ApplicationController
         @resume.projects.delete(project)
       end
     end
-    redirect_to edit_resume_path @resume
+    render json: { errors: @resume.errors }
   end
   def new_skill
     @resume = Resume.where(id: params['id']).first
