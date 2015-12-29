@@ -1,14 +1,15 @@
 @import "variables"
 
 #autosave > div
-  display: none
   background-color: #bbb
   padding: 10px 30px
-  position: absolute
+  position: fixed
   bottom: 0px
   right: 0px
   text-align: center
   width: 150px
+  opacity: 0
+  transition: opacity .5s
 
   i
     padding: 5px
@@ -18,12 +19,9 @@
 
   .error
     background-color: $red
-
   .saving
     background-color: $blue
-
   .saved
     background-color: $green
-
   .active
-    display: block
+    opacity: 1

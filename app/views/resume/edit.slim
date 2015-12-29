@@ -3,7 +3,7 @@
     .col-md-12
       h3.center
         = t 'basic_information'
-  = form_for @resume do |form|
+  = form_for @resume, remote: true do |form|
     - [:name, :desc, :website, :email, :contactname, :phone, :address].each do |field|
       .row
         .col-md-2.align-right
@@ -18,7 +18,7 @@
     .col-md-12
       h3.center
         = t 'education'
-  = form_for @resume, url: {action: 'update_educations'} do |form|
+  = form_for @resume, remote: true, url: {action: 'update_educations'} do |form|
     - @educations.each do |education|
       .row
         .col-md-2.align-right
@@ -40,7 +40,7 @@
     .col-md-12
       h3.center
         = t 'projects'
-  = form_for @resume, url: {action: 'update_projects'} do |form|
+  = form_for @resume, remote: true, url: {action: 'update_projects'} do |form|
     - @projects.each do |project|
       .row
         .col-md-2.align-right
@@ -59,7 +59,7 @@
     .col-md-12
       h3.center
         = t 'jobs'
-  = form_for @resume, url: {action: 'update_resps'} do |form|
+  = form_for @resume, remote: true, url: {action: 'update_resps'} do |form|
     - @jobs.each do |job|
       .row
         .col-md-10.col-md-offset-2
