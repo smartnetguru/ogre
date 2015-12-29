@@ -10,9 +10,6 @@
           = form.label field
         .col-md-4
           = form.text_field field
-    .row
-      .col-md-4.col-md-offset-2
-        = form.submit
 
   .row
     .col-md-12
@@ -32,9 +29,6 @@
               = education.degree_text
             span.date
               = pretty_date_range education.start, education.end
-    .row
-      .col-md-4.col-md-offset-2
-        = form.submit
 
   .row
     .col-md-12
@@ -51,9 +45,6 @@
             = "#{project.title_text}:"
           span.description
             = project.desc_text
-    .row
-      .col-md-4.col-md-offset-2
-        = form.submit
 
   .row
     .col-md-12
@@ -82,9 +73,6 @@
                   = check_box_tag "resp[#{resp.id}]", '1', @resume.responsibilitys.include?(resp)
                 span.text
                   = resp.text
-    .row
-      .col-md-4.col-md-offset-2
-        = form.submit
 
   .row
     .col-md-12

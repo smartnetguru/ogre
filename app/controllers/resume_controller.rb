@@ -45,7 +45,6 @@ class ResumeController < ApplicationController
         @resume.educations.delete(education)
       end
     end
-    sleep 2
     render json: { errors: @resume.errors }
   end
   def update_resps
@@ -59,7 +58,6 @@ class ResumeController < ApplicationController
         @resume.responsibilitys.delete(resp)
       end
     end
-    sleep 2
     render json: { errors: @resume.errors }
   end
   def update_projects
@@ -73,7 +71,6 @@ class ResumeController < ApplicationController
         @resume.projects.delete(project)
       end
     end
-    sleep 2
     render json: { errors: @resume.errors }
   end
   def new_skill

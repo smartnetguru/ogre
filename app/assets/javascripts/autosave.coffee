@@ -22,3 +22,5 @@ $ ->
       ').removeClass 'active'
     $('#autosave .error').addClass 'active'
 
+  $('#edit-resume input').on 'change', ->
+    $(this).submit()
