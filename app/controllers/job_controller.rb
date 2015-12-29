@@ -16,7 +16,7 @@ class JobController < ApplicationController
       update_block[f] = new_job.send f
     end
     @job.update update_block
-    redirect_to edit_job_path @job
+    render json: { errors: @job.errors }
   end
   def edit
     @job = Job.where(id: params['id']).first

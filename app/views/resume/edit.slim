@@ -84,7 +84,7 @@
     .col-md-10.col-md-offset-2
       .skills
         - @skills.each do |skill|
-          = form_for skill do |form|
+          = form_for skill, remote: true do |form|
             .skill
               = form.text_field :name
               = link_to '', "/skill/#{skill.id}/delete", class: 'fa fa-times-circle delete'

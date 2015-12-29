@@ -8,7 +8,7 @@ class SkillController < ApplicationController
       update_block[f] = new_skill.send f
     end
     @skill.update update_block
-    redirect_to edit_resume_path(@skill.resume)
+    render json: { errors: @skill.errors }
   end
   def edit
     @job = Job.where(id: params['id']).first

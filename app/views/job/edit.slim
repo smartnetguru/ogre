@@ -3,7 +3,7 @@
     .col-md-12
       h3.center
         = t 'edit_job'
-  = form_for @job do |form|
+  = form_for @job, remote: true do |form|
     - [:company, :position, :location, :start, :end].each do |field|
       .row
         .col-md-2.align-right
