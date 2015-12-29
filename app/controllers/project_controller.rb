@@ -16,7 +16,7 @@ class ProjectController < ApplicationController
       update_block[f] = new_project.send f
     end
     @project.update update_block
-    redirect_to edit_project_path @project
+    render json: { errors: @project.errors }
   end
   def edit
     @project = Project.where(id: params['id']).first

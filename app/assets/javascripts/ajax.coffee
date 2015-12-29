@@ -3,7 +3,8 @@ $ ->
     'form.edit_resume',
     'form.edit_job',
     'form.edit_skill',
-    'form.edit_responsibility'
+    'form.edit_responsibility',
+    'form.edit_project'
   ]).each (index, form_class) ->
     $(form_class)
       .on 'ajax:beforeSend', ->
