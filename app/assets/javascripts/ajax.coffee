@@ -4,7 +4,8 @@ $ ->
     'form.edit_job',
     'form.edit_skill',
     'form.edit_responsibility',
-    'form.edit_project'
+    'form.edit_project',
+    'form.edit_education'
   ]).each (index, form_class) ->
     $(form_class)
       .on 'ajax:beforeSend', ->

@@ -16,7 +16,7 @@ class EducationController < ApplicationController
       update_block[f] = new_education.send f
     end
     @education.update update_block
-    redirect_to edit_education_path(@education)
+    render json: { errors: @education.errors }
   end
   def edit
     @education = Education.where(id: params['id']).first
