@@ -57,6 +57,7 @@ en:
   brand: 'OGRE'
   email: 'Email'
   password: 'Password'
+  password_again: 'Password (again)'
   toggle_navigation: 'Toggle Navigation'
   edit_resume: 'Edit Resume'
   edit_education: 'Edit Education'
