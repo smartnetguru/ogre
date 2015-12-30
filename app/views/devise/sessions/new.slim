@@ -18,6 +18,11 @@
     .row
       .col-md-12
         = f.submit t('log_in')
+    .row
+      .col-md-12.center
+        .fake-anchor.facebook href=omniauth_authorize_path(:user, :facebook)
+          = t 'log_in_with'
+          i.fa.fa-facebook-square
   .row
     .col-md-12
       = render "devise/shared/links"
