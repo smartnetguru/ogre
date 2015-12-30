@@ -117,7 +117,23 @@ class ResumeController < ApplicationController
   end
   def duplicate
     @resume = Resume.where(id: params['id']).first
-
-    redirect_to edit_resume_path(@resume)
+    dup_str = I18n.t 'duplicate_noun'
+    resume = @resume.dup
+    resume.name = "#{resume.name} (duplicate)" if /\(#{dup_str}\)$/.match(resume.name).nil?
+    resume.save # Doing this so the resume gets an id, hoping for a better solution eventually
+    ['education', 'project', 'responsibility'].each do |relation|
+      plural = "#{relation}s" # the relationships don't seem to have been pluralized correctly
+                              # I didn't think it would matter until now
+      @resume.send(plural).each do |relative|
+        resume.send(plural).push relative
+      end
+    end
+    @resume.skill.each do |_skill|
+      skill = _skill.dup
+      skill.resume = resume
+      skill.save
+    end
+    resume.save
+    redirect_to edit_resume_path(resume)
   end
 end

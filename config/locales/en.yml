@@ -20,6 +20,7 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  duplicate_noun: 'duplicate'
   duplicate_resume: 'Duplicate this Resume'
   characters_minimum: 'characters minimum'
   sign_up: 'Sign Up'
