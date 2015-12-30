@@ -2,8 +2,12 @@
   .row
     .col-md-12
       .subnav
-        = link_to "/resume/#{@resume.id}/html"
-          = t 'preview_resume'
+        .item
+          = link_to "/resume/#{@resume.id}/html"
+            = t 'preview_resume'
+        .item
+          = link_to "/resume/#{@resume.id}/duplicate"
+            = t 'duplicate_resume'
   .row
     .col-md-12
       h3.center
