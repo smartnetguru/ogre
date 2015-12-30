@@ -1,3 +1,4 @@
+@import 'variables'
 $pagebreak: 768px
 
 #login-page
@@ -5,7 +6,8 @@ $pagebreak: 768px
 
   input[type='email'],
   input[type='password'],
-  input[type='submit']
+  input[type='submit'],
+  .fake-anchor
     border-color: #ddd
     border-radius: 5px
     border-style: solid
@@ -16,16 +18,40 @@ $pagebreak: 768px
 
   input[type='email']:focus,
   input[type='password']:focus,
-  input[type='submit']:focus
+  input[type='submit']:focus,
+  .fake-anchor:focus
     border-color: #000
 
   input[type='submit']:focus,
   input[type='submit']:hover
     background-color: rgba(0, 0, 0, .2)
 
+  .fake-anchor
+    display: inline-block
+
+  .fake-anchor:hover
+    cursor: pointer
+
+  .facebook
+    background-color: $facebook-blue
+    color: white
+
+    i
+      font-size: 30px
+      padding-left: 10px
+      position: absolute
+      top: 7px
+
+  .facebook:hover
+    background-color: $facebook-blue-hover
+
+  .omniauth-facebook
+    display: none
+
 #login-page
   @media screen and (max-width: $pagebreak)
     input[type='email'],
     input[type='password'],
-    input[type='submit']
+    input[type='submit'],
+    .fake-anchor
       width: 100%

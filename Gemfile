@@ -12,6 +12,7 @@ gem 'pandoc-ruby'
 gem 'twitter-bootstrap-rails'
 gem 'jquery-ui-rails'
 gem 'fontawesome-rails'
+gem 'omniauth-facebook'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
