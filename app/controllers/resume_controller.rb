@@ -115,4 +115,9 @@ class ResumeController < ApplicationController
     docx = PandocRuby.convert(html, :from => :html, :to => :docx)
     send_data docx, {filename: "#{@resume.name}.docx", type: 'application/msword'}
   end
+  def duplicate
+    @resume = Resume.where(id: params['id']).first
+
+    redirect_to edit_resume_path(@resume)
+  end
 end

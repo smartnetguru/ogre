@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get 'resume/:id/html' => 'resume#export_html'
   get 'resume/:id/pdf' => 'resume#export_pdf'
   get 'resume/:id/doc' => 'resume#export_doc'
+  get 'resume/:id/duplicate' => 'resume#duplicate'
 
   get 'education/:id/delete' => 'education#delete'
   resources :education
