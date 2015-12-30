@@ -1,6 +1,11 @@
 .container#edit-resume
   .row
     .col-md-12
+      .subnav
+        = link_to "/resume/#{@resume.id}/html"
+          = t 'preview_resume'
+  .row
+    .col-md-12
       h3.center
         = t 'basic_information'
   = form_for @resume, remote: true do |form|
