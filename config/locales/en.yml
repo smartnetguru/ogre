@@ -20,6 +20,8 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  characters_minimum: 'characters minimum'
+  sign_up: 'Sign Up'
   log_in_with: 'Log in with'
   saving: 'Saving'
   saved: 'Saved'
@@ -55,6 +57,7 @@ en:
   brand: 'OGRE'
   email: 'Email'
   password: 'Password'
+  password_again: 'Password (again)'
   toggle_navigation: 'Toggle Navigation'
   edit_resume: 'Edit Resume'
   edit_education: 'Edit Education'
