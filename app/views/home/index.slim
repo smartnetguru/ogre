@@ -8,7 +8,7 @@
       #your-resumes.accordion
         .accordion-header
           = t 'your_resumes'
-        .accordion-body
+        .accordion-body class="#{if current_user.resume.empty? then 'empty'}"
           - if current_user.resume.empty?
             .no-objects.well
               = t 'no_resumes'
@@ -39,7 +39,7 @@
       #your-jobs.accordion
         .accordion-header
           = t 'your_jobs'
-        .accordion-body
+        .accordion-body class="#{if current_user.job.empty? then 'empty'}"
           - if current_user.job.empty?
             .no-objects.well
               = t 'no_jobs'
@@ -61,7 +61,7 @@
       #your-projects.accordion
         .accordion-header
           = t 'your_projects'
-        .accordion-body
+        .accordion-body class="#{if current_user.project.empty? then 'empty'}"
           - if current_user.project.empty?
             .no-objects.well
               = t 'no_projects'
@@ -81,7 +81,7 @@
       #your-educations.accordion
         .accordion-header
           = t 'your_educations'
-        .accordion-body
+        .accordion-body class="#{if current_user.education.empty? then 'empty'}"
           - if current_user.education.empty?
             .no-objects.well
               = t 'no_educations'
