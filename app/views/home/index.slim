@@ -27,13 +27,14 @@
                 span.description
                   = resume.desc_text
                 span.export-buttons.center
-                  = link_to "/resume/#{resume.id}/pdf"
+                  - export_button_classes = 'btn btn-sm btn-secondary'
+                  = link_to "/resume/#{resume.id}/pdf", class: export_button_classes
                     = t 'export.pdf'
-                  = link_to "/resume/#{resume.id}/doc"
+                  = link_to "/resume/#{resume.id}/doc", class: export_button_classes
                     = t 'export.doc'
-                  = link_to "/resume/#{resume.id}/html"
+                  = link_to "/resume/#{resume.id}/html", class: export_button_classes
                     = t 'export.html'
-                  = link_to "/resume/#{resume.id}/txt"
+                  = link_to "/resume/#{resume.id}/txt", class: export_button_classes
                     = t 'export.txt'
                 span.delete.center
                   = link_to '', "/resume/#{resume.id}/delete", class: 'fa fa-times-circle'
