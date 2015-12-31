@@ -1,8 +1,15 @@
 .container#home-page
   .row
     .col-md-12
-      h4
-        = link_to t('create_a_resume'), :new_resume
+      .subnav
+        .item
+          = link_to t('create_a_resume'), :new_resume, class: 'btn btn-primary'
+        .item
+          = link_to t('add_a_job'), :new_job, class: 'btn btn-primary'
+        .item
+          = link_to t('add_a_project'), :new_project, class: 'btn btn-primary'
+        .item
+          = link_to t('add_an_education'), :new_education, class: 'btn btn-primary'
   .row
     .col-md-12
       #your-resumes.accordion
@@ -14,7 +21,7 @@
               = t 'no_resumes'
           - else
             - current_user.resume.each do |resume|
-              .resume
+              .resume.table-row
                 span.name
                   = link_to resume.name_text, edit_resume_path(resume)
                 span.description
@@ -32,10 +39,6 @@
                   = link_to '', "/resume/#{resume.id}/delete", class: 'fa fa-times-circle'
   .row
     .col-md-12
-      h4
-        = link_to t('add_a_job'), :new_job
-  .row
-    .col-md-12
       #your-jobs.accordion
         .accordion-header
           = t 'your_jobs'
@@ -45,17 +48,13 @@
               = t 'no_jobs'
           - else
             - current_user.job.each do |job|
-              .job
+              .job.table-row
                 span.company
                   = link_to job.company_text, edit_job_path(job)
                 span.position
                   = job.position
                 span.delete.center
                   = link_to '', "/job/#{job.id}/delete", class: 'fa fa-times-circle'
-  .row
-    .col-md-12
-      h4
-        = link_to t('add_a_project'), :new_project
   .row
     .col-md-12
       #your-projects.accordion
@@ -67,15 +66,11 @@
               = t 'no_projects'
           - else
             - current_user.project.each do |project|
-              .project
+              .project.table-row
                 span.title
                   = link_to project.title_text, edit_project_path(project)
                 span.delete.center
                   = link_to '', "/project/#{project.id}/delete", class: 'fa fa-times-circle'
-  .row
-    .col-md-12
-      h4
-        = link_to t('add_an_education'), :new_education
   .row
     .col-md-12
       #your-educations.accordion
@@ -87,7 +82,7 @@
               = t 'no_educations'
           - else
             - current_user.education.each do |education|
-              .education
+              .education.table-row
                 span.school
                   = link_to education.school_text, edit_education_path(education)
                 span.degree
