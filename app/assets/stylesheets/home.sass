@@ -1,4 +1,4 @@
-$pagebreak: 768px
+@import 'variables'
 
 #home-page
   .accordion-header
@@ -88,17 +88,22 @@ $pagebreak: 768px
     .delete
       width: 10%
 
-  .resume:nth-child(even),
-  .job:nth-child(even),
-  .project:nth-child(even),
-  .education:nth-child(even)
-    background-color: rgba(0, 0, 0, .1)
-
   .no-objects
     margin: 5px 0px 5px 0px
 
   .table-row
     padding: 5px
 
-  .table-row:hover
-    background-color: rgba(0, 64, 128, .2)
+  $resource-colors: $resume-base-color $job-base-color $project-base-color $education-base-color
+  $resource-classes: '#your-resumes' '#your-jobs' '#your-projects' '#your-educations'
+  @each $resource-color in $resource-colors
+    $resource-class: nth($resource-classes, index($resource-colors, $resource-color))
+    #{$resource-class}
+      > div
+        border-color: $resource-color
+      .accordion-header
+        @include background-brightness($resource-color, 1.8)
+      .table-row:nth-child(even)
+        @include background-brightness($resource-color, 1.2)
+      .table-row:hover
+        @include background-brightness($resource-color, 1.5)
