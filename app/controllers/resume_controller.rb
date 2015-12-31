@@ -1,5 +1,7 @@
 class ResumeController < ApplicationController
   before_action :authenticate_user!
+  before_action :resume_belongs_to_user
+
   def new
     resume = Resume.create user_id: current_user.id
     if resume.valid?
@@ -10,7 +12,6 @@ class ResumeController < ApplicationController
   end
   def update
     new_resume = Hashie::Mash.new(params['resume'])
-    @resume = Resume.where(id: params['id']).first
     update_block = {}
     [:name, :desc, :website, :email, :contactname, :phone, :address].each do |f|
       update_block[f] = new_resume.send f
@@ -19,15 +20,13 @@ class ResumeController < ApplicationController
     render json: { errors: @resume.errors }
   end
   def edit
-    @resume = Resume.where(id: params['id']).first
     @educations = Education.where(user_id: current_user.id)
     @jobs = Job.where(user: current_user)
     @projects = Project.where(user: current_user)
     @skills = Skill.where(resume: @resume)
   end
   def delete
-    resume = Resume.where(id: params['id']).first
-    resume.destroy if not resume.nil?
+    @resume.destroy if not @resume.nil?
     # not sure why
     # redirect_to :root_path
     # doesn't work here. I really hope it's not part of a
@@ -35,7 +34,6 @@ class ResumeController < ApplicationController
     redirect_to '/'
   end
   def update_educations
-    @resume = Resume.where(id: params['id']).first
     params['education'].each do |http_resp|
       education = Education.where(id: http_resp[0].to_i).first
       related = http_resp[1] == '1'
@@ -48,7 +46,6 @@ class ResumeController < ApplicationController
     render json: { errors: @resume.errors }
   end
   def update_resps
-    @resume = Resume.where(id: params['id']).first
     params['resp'].each do |http_resp|
       resp = Responsibility.where(id: http_resp[0].to_i).first
       related = http_resp[1] == '1'
@@ -61,7 +58,6 @@ class ResumeController < ApplicationController
     render json: { errors: @resume.errors }
   end
   def update_projects
-    @resume = Resume.where(id: params['id']).first
     params['project'].each do |http_resp|
       project = Project.where(id: http_resp[0].to_i).first
       related = http_resp[1] == '1'
@@ -74,25 +70,21 @@ class ResumeController < ApplicationController
     render json: { errors: @resume.errors }
   end
   def new_skill
-    @resume = Resume.where(id: params['id']).first
     @skill = Skill.create({resume: @resume})
     redirect_to edit_resume_path @resume
   end
   def export_txt
-    @resume = Resume.where(id: params['id']).first
     @jars = @resume.get_relevant_jobs_and_responsibilities
     @educations = @resume.educations_sorted
     render layout: false, content_type: 'text/plain'
   end
   def export_html
-    @resume = Resume.where(id: params['id']).first
     @jars = @resume.get_relevant_jobs_and_responsibilities
     @educations = @resume.educations_sorted
     @projects = @resume.projects_sorted
     render layout: false, content_type: 'text/html'
   end
   def export_pdf
-    @resume = Resume.where(id: params['id']).first
     @jars = @resume.get_relevant_jobs_and_responsibilities
     @educations = @resume.educations_sorted
     html = render_to_string 'export_html', layout: false, content_type: 'text/html'
@@ -108,7 +100,6 @@ class ResumeController < ApplicationController
     send_data pdf, {filename: "#{@resume.name}.pdf", type: 'application/pdf'}
   end
   def export_doc
-    @resume = Resume.where(id: params['id']).first
     @jars = @resume.get_relevant_jobs_and_responsibilities
     @educations = @resume.educations_sorted
     html = render_to_string 'export_html', layout: false, content_type: 'text/html'
@@ -116,7 +107,6 @@ class ResumeController < ApplicationController
     send_data docx, {filename: "#{@resume.name}.docx", type: 'application/msword'}
   end
   def duplicate
-    @resume = Resume.where(id: params['id']).first
     dup_tag = I18n.t 'duplicate_noun'
     resume = @resume.dup
     resume.name = "#{resume.name} (duplicate)" if /\(#{dup_tag}\)$/.match(resume.name).nil?
@@ -135,5 +125,31 @@ class ResumeController < ApplicationController
     end
     resume.save
     redirect_to edit_resume_path(resume)
+  end
+
+  private
+  def resume_belongs_to_user
+    action = params['action'].to_sym
+    these_actions = [
+      :duplicate,
+      :export_doc,
+      :export_pdf,
+      :export_html,
+      :export_txt,
+      :new_skill,
+      :update_projects,
+      :update_resps,
+      :update_educations,
+      :delete,
+      :edit,
+      :update
+    ]
+    @resume = Resume.where(id: params['id']).first
+    if these_actions.include? action
+      if @resume.user != current_user
+        flash[:alert] = I18n.t 'wrong_owner'
+        redirect_to '/'
+      end
+    end
   end
 end
