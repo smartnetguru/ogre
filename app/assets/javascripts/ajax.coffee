@@ -14,7 +14,6 @@ $ ->
         $('body').trigger 'auto-saved'
       .on 'ajax:error', (xhr, textStatus, errorThrown) ->
         $('body').trigger 'auto-error'
-        debugger
         console.log 'ajax:error'
     $("#{form_class} input").on 'change', ->
       $(this).submit()
