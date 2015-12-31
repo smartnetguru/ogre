@@ -20,6 +20,10 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  no_educations: 'No education history available. Add some on the home page.'
+  no_projects: 'No projects available. Add some on the home page.'
+  no_jobs: 'No job history available. Add some on the home page.'
+  no_skills: 'No skills have been added. Add some by clicking the "%{add_a_skill}" button below.'
   wrong_owner: 'Requested resource does not belong to the current user'
   duplicate_noun: 'duplicate'
   duplicate_resume: 'Duplicate this Resume'
@@ -48,6 +52,7 @@ en:
   create_a_resume: 'Create a Resume'
   add_a_job: 'Add a Job'
   add_a_responsibility: 'Add Responsibility'
+  add_a_skill: 'Add a Skill'
   name: 'Name'
   company: 'Company'
   description: 'Description'
