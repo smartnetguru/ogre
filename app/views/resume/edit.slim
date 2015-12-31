@@ -3,10 +3,10 @@
     .col-md-12
       .subnav
         .item
-          = link_to "/resume/#{@resume.id}/html"
+          = link_to "/resume/#{@resume.id}/html", class: 'btn btn-primary'
             = t 'preview_resume'
         .item
-          = link_to "/resume/#{@resume.id}/duplicate"
+          = link_to "/resume/#{@resume.id}/duplicate", class: 'btn btn-primary'
             = t 'duplicate_resume'
   .row
     .col-md-12
