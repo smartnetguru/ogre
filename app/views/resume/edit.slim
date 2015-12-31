@@ -103,7 +103,6 @@
       .center
         h3
           = t 'skills'
-        = t 'enter_to_save'
   - if @skills.empty?
     .row
       .col-md-12
@@ -118,6 +117,10 @@
               = form.text_field :name
               = link_to '', "/skill/#{skill.id}/delete", class: 'fa fa-times-circle delete'
   .row
-    .col-md-4.col-md-offset-2
+    .col-md-8.col-md-offset-2
       = form_for @resume, url: {action: 'new_skill'} do |form|
-        = form.submit t('add_a_skill')
+        .center
+          = form.submit t('add_a_skill'), class: 'btn btn-primary'
+        - if !@skills.empty?
+          .alert.alert-info
+            = t 'enter_to_save'
