@@ -112,6 +112,9 @@
     .col-md-8.col-md-offset-2
       = form_for @resume, remote: true, url: {action: 'update_skill_order'}, html: {class: 'edit_order'}
         input#skill-order name='order' hidden=true
+      - if !@skills.empty?
+        .alert.alert-info
+          = t('skills-info').html_safe
       .skills.shapeshift-container
         - @skills.each do |skill|
           = form_for skill, remote: true do |form|
@@ -123,7 +126,4 @@
     .col-md-8.col-md-offset-2
       = form_for @resume, url: {action: 'new_skill'} do |form|
         .center
-          = form.submit t('add_a_skill'), class: 'btn btn-primary'
-        - if !@skills.empty?
-          .alert.alert-info
-            = t 'enter_to_save'
+          = form.submit t('add_a_skill'), class: 'btn btn-primary new-skill'

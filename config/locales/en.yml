@@ -33,7 +33,7 @@ en:
   saving: 'Saving'
   saved: 'Saved'
   error: 'Error'
-  enter_to_save: 'Press Enter to save modified skills'
+  skills-info: 'Press Enter to save modified skills<br/>Order of skills is left to right top to bottom'
   resume: 'Resume'
   company: 'Company'
   project: 'Project'
