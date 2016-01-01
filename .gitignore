@@ -29,9 +29,9 @@ config/secrets.yml
 .rvmrc
 
 # if using bower-rails ignore default bower_components path bower.json files
-/vendor/assets/bower_components
+# /vendor/assets/bower_components # not sure why this was ignored in the first place
 *.bowerrc
-bower.json
+# bower.json # not sure why this was ignored either
 
 # Ignore pow environment settings
 .powenv
