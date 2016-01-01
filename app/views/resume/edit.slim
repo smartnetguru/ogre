@@ -110,7 +110,7 @@
           = t 'no_skills', add_a_skill: t('add_a_skill')
   .row
     .col-md-8.col-md-offset-2
-      = form_for @resume, remote: true, url: {action: 'update_skill_order'}
+      = form_for @resume, remote: true, url: {action: 'update_skill_order'}, html: {class: 'edit_order'}
         input#skill-order name='order' hidden=true
       .skills.shapeshift-container
         - @skills.each do |skill|

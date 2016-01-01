@@ -132,7 +132,7 @@ class ResumeController < ApplicationController
       skill.rank = order.index(skill.id)
       skill.save
     end
-    redirect_to edit_resume_path(@resume)
+    render json: { errors: @resume.errors }
   end
 
   private
