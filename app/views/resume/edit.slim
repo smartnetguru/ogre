@@ -35,7 +35,7 @@
         .col-md-2.align-right
           = hidden_field_tag "education[#{education.id}]", '0'
           = check_box_tag "education[#{education.id}]", '1', @resume.educations.include?(education)
-        .col-md-10
+        .col-md-8
           .education
             span.school
               = "#{education.school_text}: "
@@ -59,7 +59,7 @@
         .col-md-2.align-right
           = hidden_field_tag "project[#{project.id}]", '0'
           = check_box_tag "project[#{project.id}]", '1', @resume.projects.include?(project)
-        .col-md-10
+        .col-md-8
           span.title
             = "#{project.title_text}:"
           span.description
@@ -77,20 +77,20 @@
   = form_for @resume, remote: true, url: {action: 'update_resps'} do |form|
     - @jobs.each do |job|
       .row
-        .col-md-10.col-md-offset-2
+        .col-md-8.col-md-offset-2
           span.company
             = "#{job.company_text}"
           span.position
             = "(#{job.position_text})"
       - if job.responsibility.empty?
         .row
-          .col-md-10.col-md-offset-2
+          .col-md-8.col-md-offset-2
             .no-responsibilities
               = 'Needs responsibilities to be added to resume'
       - else
         - job.responsibility.each do |resp|
           .row
-            .col-md-10.col-md-offset-2
+            .col-md-8.col-md-offset-2
               .resp
                 span.inputs
                   = hidden_field_tag "resp[#{resp.id}]", '0'
@@ -109,12 +109,15 @@
         .well.center
           = t 'no_skills', add_a_skill: t('add_a_skill')
   .row
-    .col-md-10.col-md-offset-2
-      .skills
+    .col-md-8.col-md-offset-2
+      = form_for @resume, remote: true, url: {action: 'update_skill_order'}, html: {class: 'edit_order'}
+        input#skill-order name='order' hidden=true
+      .skills.shapeshift-container
         - @skills.each do |skill|
           = form_for skill, remote: true do |form|
-            .skill
+            .skill data-id=skill.id
               = form.text_field :name
+              = link_to '', "#", class: 'fa fa-arrows drag'
               = link_to '', "/skill/#{skill.id}/delete", class: 'fa fa-times-circle delete'
   .row
     .col-md-8.col-md-offset-2

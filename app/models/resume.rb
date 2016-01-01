@@ -35,6 +35,11 @@ class Resume < ActiveRecord::Base
       best_fit_date education.start, education.end
     end.reverse
   end
+  def skills_sorted
+    skill.sort_by do |skill|
+      skill.rank
+    end
+  end
   def stylesheet_file
     # This is important for the following reasons
     # - PDF export will want either the file name or the actuall css to load
