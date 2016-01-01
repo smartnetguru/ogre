@@ -23,7 +23,7 @@ class ResumeController < ApplicationController
     @educations = Education.where(user_id: current_user.id)
     @jobs = Job.where(user: current_user)
     @projects = Project.where(user: current_user)
-    @skills = Skill.where(resume: @resume)
+    @skills = @resume.skills_sorted
   end
   def delete
     @resume.destroy if not @resume.nil?
@@ -126,6 +126,14 @@ class ResumeController < ApplicationController
     resume.save
     redirect_to edit_resume_path(resume)
   end
+  def update_skill_order
+    order = JSON.parse(params['order'])
+    @resume.skill.each do |skill|
+      skill.rank = order.index(skill.id)
+      skill.save
+    end
+    redirect_to edit_resume_path(@resume)
+  end
 
   private
   def resume_belongs_to_user
@@ -140,6 +148,7 @@ class ResumeController < ApplicationController
       :update_projects,
       :update_resps,
       :update_educations,
+      :update_skill_order,
       :delete,
       :edit,
       :update

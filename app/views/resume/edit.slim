@@ -110,12 +110,12 @@
           = t 'no_skills', add_a_skill: t('add_a_skill')
   .row
     .col-md-8.col-md-offset-2
-      = form_for @resume, url: {action: 'update_skill_order'}
-        input name='order' hidden=true
+      = form_for @resume, remote: true, url: {action: 'update_skill_order'}
+        input#skill-order name='order' hidden=true
       .skills.shapeshift-container
         - @skills.each do |skill|
           = form_for skill, remote: true do |form|
-            .skill
+            .skill data-id=skill.id
               = form.text_field :name
               = link_to '', "#", class: 'fa fa-arrows drag'
               = link_to '', "/skill/#{skill.id}/delete", class: 'fa fa-times-circle delete'
