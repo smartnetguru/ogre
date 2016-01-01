@@ -38,7 +38,7 @@ class EducationController < ApplicationController
     ]
     @education = Education.where(id: params['id']).first
     if these_actions.include? action
-      if @education.user != current_user
+      if @education.user_id != current_user.id
         flash[:alert] = I18n.t 'wrong_owner'
         redirect_to '/'
       end
