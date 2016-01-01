@@ -9,7 +9,11 @@ $resume-base-color: #FF7DFC
 $job-base-color: #7169E8
 $project-base-color: #69E87E
 $education-base-color: #FFFE74
+$delete-color: #BF0000
 $pagebreak: 768px
 
 @mixin background-brightness($base, $factor)
   background: (white - $base) / $factor + $base
+
+@mixin darken-color($base, $factor)
+  color: $base * $factor

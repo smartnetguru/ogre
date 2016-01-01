@@ -110,11 +110,12 @@
           = t 'no_skills', add_a_skill: t('add_a_skill')
   .row
     .col-md-8.col-md-offset-2
-      .skills
+      .skills.shapeshift-container
         - @skills.each do |skill|
           = form_for skill, remote: true do |form|
             .skill
               = form.text_field :name
+              = link_to '', "#", class: 'fa fa-arrows drag'
               = link_to '', "/skill/#{skill.id}/delete", class: 'fa fa-times-circle delete'
   .row
     .col-md-8.col-md-offset-2
@@ -124,10 +125,3 @@
         - if !@skills.empty?
           .alert.alert-info
             = t 'enter_to_save'
-
-  .row
-    .col-md-offset-2.col-md-8
-      .shapeshift-container
-        - (1..20).each do |i|
-          .item
-            = i

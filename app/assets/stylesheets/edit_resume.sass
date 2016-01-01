@@ -1,3 +1,5 @@
+@import 'variables'
+
 #edit-resume
   .education > span
     display: inline-block
@@ -32,10 +34,26 @@
   .skill
     position: relative
 
+    a
+      position: absolute
+      top: 5px
+
+    a:hover
+      text-decoration: none
+
   .delete
-    position: absolute
-    top: 5px
+    color: $delete-color
     right: 5px
+
+  .delete:hover
+    @include darken-color($delete-color, .75)
+
+  .drag
+    color: $facebook-blue
+    right: 20px
+
+  .drag:hover
+    @include darken-color($facebook-blue, .75)
 
   .no-responsibilities
     color: #aaa

@@ -11,4 +11,8 @@ $ ->
     changeYear: true
     dateFormat: 'yy-mm-dd'
 
-  $('.shapeshift-container').shapeshift()
+  $('.shapeshift-container').shapeshift({
+    handle: '.drag'
+  })
+  $('.drag').on 'click', ->
+    return false

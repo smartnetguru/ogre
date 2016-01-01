@@ -43,9 +43,9 @@
     height: 30px
 
     a
-      color: #BF0000
+      color: $delete-color
     a:hover
-      color: #7F0000
+      @include darken-color($delete-color, .75)
       text-decoration: none
 
   .resume
