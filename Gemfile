@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 gem 'devise'
 gem 'omniauth'
 gem 'dotenv-rails'
@@ -13,6 +12,7 @@ gem 'twitter-bootstrap-rails'
 gem 'jquery-ui-rails'
 gem 'fontawesome-rails'
 gem 'omniauth-facebook'
+gem 'bower-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'

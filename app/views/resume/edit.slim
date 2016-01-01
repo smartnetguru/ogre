@@ -124,3 +124,10 @@
         - if !@skills.empty?
           .alert.alert-info
             = t 'enter_to_save'
+
+  .row
+    .col-md-offset-2.col-md-8
+      .shapeshift-container
+        - (1..20).each do |i|
+          .item
+            = i
