@@ -37,7 +37,7 @@
   = "\n"
 
 = surround_with_box "Skills"
-- @resume.skill.each_with_index do |skill, index|
+- @resume.skills_sorted.each_with_index do |skill, index|
   = tab if index%2 == 0
   = raw "> #{skill.name}"
   = " "*(width/2 - skill.name.length)
