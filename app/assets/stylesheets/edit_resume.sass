@@ -51,10 +51,13 @@
 
   .delete
     color: $delete-color
+    opacity: .2
     right: 5px
 
-  .delete:hover
+  .delete:hover,
+  .delete:focus
     @include darken-color($delete-color, .75)
+    opacity: 1
 
   .drag
     color: $facebook-blue
