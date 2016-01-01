@@ -44,8 +44,10 @@
 
     a
       color: $delete-color
-    a:hover
+    a:hover,
+    a:focus
       @include darken-color($delete-color, .75)
+      outline: none
       text-decoration: none
 
   .resume
