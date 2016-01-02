@@ -127,6 +127,13 @@ class ResumeController < ApplicationController
     resume.save
     redirect_to edit_resume_path(resume)
   end
+  def reset_preview_key
+    characters = [('a'..'z'), ('A'..'Z')].map { |i| i.to_a }.flatten
+    @resume.preview_key = (0...50).map { characters[rand(characters.length)] }.join
+    @resume.save
+    flash[:notice] = I18n.t 'share_key_reset'
+    redirect_to edit_resume_path(@resume)
+  end
   def update_skill_order
     order = JSON.parse(params['order'])
     @resume.skill.each do |skill|
@@ -165,7 +172,8 @@ class ResumeController < ApplicationController
       :update_skill_order,
       :delete,
       :edit,
-      :update
+      :update,
+      :reset_preview_key
     ]
     @resume = Resume.where(id: params['id']).first
     if these_actions.include? action
