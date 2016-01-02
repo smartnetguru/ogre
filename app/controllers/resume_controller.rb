@@ -4,7 +4,7 @@ class ResumeController < ApplicationController
   before_action :resume_belongs_to_user
 
   def new
-    resume = Resume.create user_id: current_user.id, preview_key: random_hash
+    resume = Resume.create user_id: current_user.id
     if resume.valid?
       redirect_to edit_resume_path(resume)
     else
@@ -128,9 +128,7 @@ class ResumeController < ApplicationController
     redirect_to edit_resume_path(resume)
   end
   def reset_preview_key
-    characters = [('a'..'z'), ('A'..'Z')].map { |i| i.to_a }.flatten
-    @resume.preview_key = (0...50).map { characters[rand(characters.length)] }.join
-    @resume.save
+    @resume.reset_preview_key
     flash[:notice] = I18n.t 'share_key_reset'
     redirect_to edit_resume_path(@resume)
   end
@@ -149,12 +147,7 @@ class ResumeController < ApplicationController
     if action == :export_html
       @resume = Resume.where(id: params['id']).first
       @preview_key = params['preview_key']
-      if @preview_key == @resume.preview_key
-        @jars = @resume.get_relevant_jobs_and_responsibilities
-        @educations = @resume.educations_sorted
-        @projects = @resume.projects_sorted
-        render layout: false, content_type: 'text/html'
-      end
+      export_html if @preview_key == @resume.preview_key
     end
   end
   def resume_belongs_to_user

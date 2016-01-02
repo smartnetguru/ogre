@@ -52,4 +52,9 @@ class Resume < ActiveRecord::Base
     # - In the future, there will probably be resume specific CSS files
     ActionController::Base.helpers.asset_path 'resume/default.sass'
   end
+  def reset_preview_key
+    characters = [('a'..'z'), ('A'..'Z')].map { |i| i.to_a }.flatten
+    self.preview_key = (0...50).map { characters[rand(characters.length)] }.join
+    self.save
+  end
 end
