@@ -1,2 +1,17 @@
+@import 'variables'
+
 #pagenavbar a
   text-align: right
+
+#main-navbar
+  background-color: #4c4c4c
+  border-radius: 0px
+  border-style: none
+  margin-bottom: 0px
+
+  a
+    color: #bbb
+
+  a:hover
+    @include darken-background-color(#4c4c4c, .8)
+    color: #aaa
