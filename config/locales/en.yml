@@ -86,3 +86,20 @@ en:
     doc: 'DOC'
     html: 'HTML'
     txt: 'TXT'
+  basics:
+    labels:
+      name: 'Name of Resume'
+      desc: 'Description of Resume'
+      email: 'Email Address'
+      website: 'URL to your Website'
+      contactname: 'Your Name'
+      phone: 'Your Phone Number'
+      address: 'Your Address'
+    placeholders:
+      name: '(e.g. SoftCo. Resume)'
+      desc: '(e.g. This is the first draft of my resume to SoftCo.)'
+      email: 'foo@bar.com'
+      website: 'http://foo.bar.com'
+      contactname: 'John Doe'
+      phone: '555-555-5555 (cell)'
+      address: '123 Fake St. Springfield, OR'

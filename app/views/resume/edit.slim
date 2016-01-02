@@ -23,8 +23,9 @@
       .row
         .col-md-2.col-md-offset-2.align-right
           = form.label field
+            = t "basics.labels.#{field}"
         .col-md-4
-          = form.text_field field
+          = form.text_field field, placeholder: t("basics.placeholders.#{field}")
 
   .row
     .col-md-12
