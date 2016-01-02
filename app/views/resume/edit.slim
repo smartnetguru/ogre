@@ -16,7 +16,7 @@
             = t 'duplicate_resume'
   .row
     .col-md-12
-      h3.center
+      h3.center#first-header
         = t 'basic_information'
   = form_for @resume, remote: true do |form|
     - [:name, :desc, :website, :email, :contactname, :phone, :address].each do |field|

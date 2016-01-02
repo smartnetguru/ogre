@@ -1,7 +1,7 @@
 .container#edit-project
   .row
     .col-md-12
-      h3.center
+      h3.center#first-header
         = t 'edit_project'
   = form_for @project, remote: true do |form|
     - [:title, :desc, :start, :end].each do |field|

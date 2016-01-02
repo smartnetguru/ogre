@@ -1,7 +1,7 @@
 .container#edit-education
   .row
     .col-md-12
-      h3.center
+      h3.center#first-header
         = t 'edit_education'
   = form_for @education, remote: true do |form|
     - [:school, :start, :end, :degree].each do |field|
