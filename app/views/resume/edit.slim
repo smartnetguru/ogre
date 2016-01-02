@@ -32,7 +32,7 @@
         = t 'education'
   - if @educations.empty?
     .row
-      .col-md-12
+      .col-md-8.col-md-offset-2
         .well.center
           = t 'no_educations'
   = form_for @resume, remote: true, url: {action: 'update_educations'} do |form|
@@ -55,7 +55,7 @@
         = t 'projects'
   - if @projects.empty?
     .row
-      .col-md-12
+      .col-md-8.col-md-offset-2
         .well.center
           = t 'no_projects'
   = form_for @resume, remote: true, url: {action: 'update_projects'} do |form|
@@ -76,7 +76,7 @@
         = t 'jobs'
   - if @jobs.empty?
     .row
-      .col-md-12
+      .col-md-8.col-md-offset-2
         .well.center
           = t 'no_jobs'
   = form_for @resume, remote: true, url: {action: 'update_resps'} do |form|
@@ -110,7 +110,7 @@
           = t 'skills'
   - if @skills.empty?
     .row
-      .col-md-12
+      .col-md-8.col-md-offset-2
         .well.center
           = t 'no_skills', add_a_skill: t('add_a_skill')
   .row
