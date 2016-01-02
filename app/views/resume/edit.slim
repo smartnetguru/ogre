@@ -21,7 +21,7 @@
   = form_for @resume, remote: true do |form|
     - [:name, :desc, :website, :email, :contactname, :phone, :address].each do |field|
       .row
-        .col-md-2.align-right
+        .col-md-2.col-md-offset-2.align-right
           = form.label field
         .col-md-4
           = form.text_field field
@@ -38,11 +38,10 @@
   = form_for @resume, remote: true, url: {action: 'update_educations'} do |form|
     - @educations.each do |education|
       .row
-        .col-md-2.align-right
-          = hidden_field_tag "education[#{education.id}]", '0'
-          = check_box_tag "education[#{education.id}]", '1', @resume.educations.include?(education)
-        .col-md-8
+        .col-md-8.col-md-offset-2
           .education
+            = hidden_field_tag "education[#{education.id}]", '0'
+            = check_box_tag "education[#{education.id}]", '1', @resume.educations.include?(education)
             span.school
               = "#{education.school_text}: "
             span.degree
@@ -62,14 +61,14 @@
   = form_for @resume, remote: true, url: {action: 'update_projects'} do |form|
     - @projects.each do |project|
       .row
-        .col-md-2.align-right
-          = hidden_field_tag "project[#{project.id}]", '0'
-          = check_box_tag "project[#{project.id}]", '1', @resume.projects.include?(project)
-        .col-md-8
-          span.title
-            = "#{project.title_text}:"
-          span.description
-            = project.desc_text
+        .col-md-8.col-md-offset-2
+          .project
+            = hidden_field_tag "project[#{project.id}]", '0'
+            = check_box_tag "project[#{project.id}]", '1', @resume.projects.include?(project)
+            span.title
+              = "#{project.title_text}:"
+            span.description
+              = project.desc_text
 
   .row
     .col-md-12
