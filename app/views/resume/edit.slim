@@ -3,6 +3,9 @@
     .col-md-12
       .subnav
         .item
+          = link_to "/resume/#{@resume.id}/html?preview_key=#{@resume.preview_key}", class: 'btn btn-primary'
+            = t 'share_resume'
+        .item
           = link_to "/resume/#{@resume.id}/html", class: 'btn btn-primary'
             = t 'preview_resume'
         .item

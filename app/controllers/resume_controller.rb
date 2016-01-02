@@ -1,9 +1,10 @@
 class ResumeController < ApplicationController
+  before_action :anonymous_preview
   before_action :authenticate_user!
   before_action :resume_belongs_to_user
 
   def new
-    resume = Resume.create user_id: current_user.id
+    resume = Resume.create user_id: current_user.id, preview_key: random_hash
     if resume.valid?
       redirect_to edit_resume_path(resume)
     else
@@ -136,6 +137,19 @@ class ResumeController < ApplicationController
   end
 
   private
+  def anonymous_preview
+    action = params['action'].to_sym
+    if action == :export_html
+      @resume = Resume.where(id: params['id']).first
+      @preview_key = params['preview_key']
+      if @preview_key == @resume.preview_key
+        @jars = @resume.get_relevant_jobs_and_responsibilities
+        @educations = @resume.educations_sorted
+        @projects = @resume.projects_sorted
+        render layout: false, content_type: 'text/html'
+      end
+    end
+  end
   def resume_belongs_to_user
     action = params['action'].to_sym
     these_actions = [

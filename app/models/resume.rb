@@ -6,6 +6,11 @@ class Resume < ActiveRecord::Base
   has_and_belongs_to_many :projects
   has_and_belongs_to_many :educations
 
+  before_create do
+    characters = [('a'..'z'), ('A'..'Z')].map { |i| i.to_a }.flatten
+    self.preview_key = (0...50).map { characters[rand(characters.length)] }.join
+  end
+
   def name_text
     return "#{I18n.t 'resume'} ##{id}" if name.nil? or name.empty?
     return name
