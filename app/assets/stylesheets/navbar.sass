@@ -1,17 +1,19 @@
 @import 'variables'
 
+$navbar-color: #777
+
 #pagenavbar a
   text-align: right
 
 #main-navbar
-  background-color: #4c4c4c
+  background-color: $navbar-color
   border-radius: 0px
   border-style: none
   margin-bottom: 0px
 
   a
-    color: #bbb
+    color: #eee
 
   a:hover
-    @include darken-background-color(#4c4c4c, .8)
-    color: #aaa
+    @include darken-background-color($navbar-color, .8)
+    color: #eee
