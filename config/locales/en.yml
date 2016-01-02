@@ -20,6 +20,9 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  share_key_reset: 'The share key has been reset for this resume'
+  reset_preview_key: 'Reset Share Key'
+  share_resume: 'Share Resume'
   no_educations: 'No education history available. Add some on the home page.'
   no_projects: 'No projects available. Add some on the home page.'
   no_jobs: 'No job history available. Add some on the home page.'

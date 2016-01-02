@@ -1,4 +1,5 @@
 class ResumeController < ApplicationController
+  before_action :anonymous_preview
   before_action :authenticate_user!
   before_action :resume_belongs_to_user
 
@@ -126,6 +127,11 @@ class ResumeController < ApplicationController
     resume.save
     redirect_to edit_resume_path(resume)
   end
+  def reset_preview_key
+    @resume.reset_preview_key
+    flash[:notice] = I18n.t 'share_key_reset'
+    redirect_to edit_resume_path(@resume)
+  end
   def update_skill_order
     order = JSON.parse(params['order'])
     @resume.skill.each do |skill|
@@ -136,6 +142,14 @@ class ResumeController < ApplicationController
   end
 
   private
+  def anonymous_preview
+    action = params['action'].to_sym
+    if action == :export_html
+      @resume = Resume.where(id: params['id']).first
+      @preview_key = params['preview_key']
+      export_html if @preview_key == @resume.preview_key
+    end
+  end
   def resume_belongs_to_user
     action = params['action'].to_sym
     these_actions = [
@@ -151,7 +165,8 @@ class ResumeController < ApplicationController
       :update_skill_order,
       :delete,
       :edit,
-      :update
+      :update,
+      :reset_preview_key
     ]
     @resume = Resume.where(id: params['id']).first
     if these_actions.include? action
