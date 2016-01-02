@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get 'resume/:id/pdf' => 'resume#export_pdf'
   get 'resume/:id/doc' => 'resume#export_doc'
   get 'resume/:id/duplicate' => 'resume#duplicate'
+  get 'resume/:id/reset_preview_key' => 'resume#reset_preview_key'
 
   get 'education/:id/delete' => 'education#delete'
   resources :education
