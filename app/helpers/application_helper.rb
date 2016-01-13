@@ -10,7 +10,7 @@ module ApplicationHelper
   end
 
   def pretty_date_range(start, stop)
-    dateformat =  "%b %d, %Y"
+    dateformat =  "%b %Y"
     return '' if start.nil? and stop.nil?
     return stop.end.strftime dateformat if start.nil?
     return start.strftime dateformat if stop.nil?
