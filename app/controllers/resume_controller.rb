@@ -96,7 +96,7 @@ class ResumeController < ApplicationController
       :margin_bottom => '0in',
       :margin_left => '0in'
     })
-    kit.stylesheets << "./public#{@resume.stylesheet_file}"
+    kit.stylesheets << Rails.public_path.join("./#{@resume.stylesheet_file}").to_s
     pdf = kit.to_pdf
     send_data pdf, {filename: "#{@resume.name}.pdf", type: 'application/pdf'}
   end
