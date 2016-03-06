@@ -38,7 +38,9 @@
 
 = surround_with_box "Skills"
 - @resume.skills_sorted.each_with_index do |skill, index|
-  = tab if index%2 == 0
-  = raw "> #{skill.name}"
-  = " "*(width/2 - skill.name.length)
-  = "\n" if index%2 == 1
+  /= tab if index%2 == 0
+  = tab
+  = raw "> #{skill.name}\n"
+  /= " "*(width/2 - skill.name.length)
+  /= " "*(width/2 - skill.name.length)
+  /= "\n" if index%2 == 1
