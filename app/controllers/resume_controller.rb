@@ -151,6 +151,10 @@ class ResumeController < ApplicationController
       @resume = Resume.where(id: params['id']).first
       @preview_key = params['preview_key']
       export_html if @preview_key == @resume.preview_key
+    elsif action == :export_json
+      @resume = Resume.where(id: params['id']).first
+      @preview_key = params['preview_key']
+      export_json if @preview_key == @resume.preview_key
     end
   end
   def resume_belongs_to_user
