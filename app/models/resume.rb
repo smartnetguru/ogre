@@ -57,4 +57,15 @@ class Resume < ActiveRecord::Base
     self.preview_key = (0...50).map { characters[rand(characters.length)] }.join
     self.save
   end
+  def json
+    retval = JSON.parse(self.to_json).except(
+      'preview_key',
+      'created_at',
+      'updated_at'
+    )
+    retval['education'] = JSON.parse(educations_sorted.to_json)
+    retval['jobs'] = JSON.parse(get_relevant_jobs_and_responsibilities.to_json)
+    retval['skills'] = JSON.parse(skills_sorted.to_json)
+    retval
+  end
 end

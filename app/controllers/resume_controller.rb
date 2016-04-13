@@ -74,6 +74,9 @@ class ResumeController < ApplicationController
     @skill = Skill.create({resume: @resume})
     redirect_to edit_resume_path @resume
   end
+  def export_json
+    render json: @resume.json
+  end
   def export_txt
     @jars = @resume.get_relevant_jobs_and_responsibilities
     @educations = @resume.educations_sorted
