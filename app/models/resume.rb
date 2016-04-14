@@ -65,6 +65,7 @@ class Resume < ActiveRecord::Base
     )
     retval['education'] = JSON.parse(educations_sorted.to_json)
     retval['jobs'] = JSON.parse(get_relevant_jobs_and_responsibilities.to_json)
+    retval['projects'] = JSON.parse(projects_sorted.to_json)
     retval['skills'] = JSON.parse(skills_sorted.to_json)
     retval
   end
